@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594503856303",
+    "project_id": "soccerbaseball-95712",
+    "storage_bucket": "soccerbaseball-95712.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594503856303:android:cd4a436125e56a7ab2e45a",
+        "android_client_info": {
+          "package_name": "com.example.swproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594503856303-1rghn6g61mfisb5g9hhqnvp7bbk4go2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb-DgtIyQEDcYcYvad1ioXlnAA-_hOny0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594503856303-1rghn6g61mfisb5g9hhqnvp7bbk4go2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
