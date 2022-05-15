@@ -10,13 +10,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.SwProject">
+
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/gradient" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".soccerActivity"/>
-        <activity android:name=".baseballActivity"/>
-        <activity android:name=".soccerPlayer"/>
+        <activity android:name=".ui.soccerActivity"/>
+        <activity android:name=".ui.baseballActivity"/>
+        <activity android:name=".ui.SoccerRankingActivity"/>
+        <activity android:name=".ui.SoccerScheduleActivity"/>
     </application>
 
 </manifest>

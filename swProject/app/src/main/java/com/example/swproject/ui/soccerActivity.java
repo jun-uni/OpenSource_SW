@@ -1,4 +1,4 @@
-package com.example.swproject;
+package com.example.swproject.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycle;
+
+import com.example.swproject.R;
 
 public class soccerActivity extends AppCompatActivity {
 
@@ -16,14 +17,15 @@ public class soccerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer);
 
-        Button btnPs = (Button) findViewById(R.id.btnPlayerS);
-        btnPs.setOnClickListener(new View.OnClickListener() {
+        Button btnRs = (Button) findViewById(R.id.btnRankingS);
+        btnRs.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),soccerPlayer.class);
+                Intent intent = new Intent(getApplicationContext(), SoccerRankingActivity.class);
                 startActivity(intent);
-
             }
         });
+
+
     }
 }
