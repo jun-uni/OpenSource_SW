@@ -1,11 +1,11 @@
 package com.example.swproject;
 
 public class MyParser {
-    static SoccerTeam[] ParseSoccerRanking(String str){
-        SoccerTeam [] result = new SoccerTeam[20];
+    static SoccerData.Team[] ParseSoccerTeamRanking(String str){
+        SoccerData.Team[] result = new SoccerData.Team[20];
 
         for(int i =0; i<20;i++){
-            result[i] = new SoccerTeam();
+            result[i] = new SoccerData.Team();
         }
 
         for(int i = 0; i<20; i++){
@@ -43,6 +43,78 @@ public class MyParser {
             str = str.substring(str.indexOf("drawn"));
             result[i].SetDrawn(Integer.parseInt(str.substring(str.indexOf("drawn") + 7, str.indexOf("}"))));
         }
+
+        return result;
+    }
+
+
+    static SoccerData.Player[] ParseSoccerPlayerRanking(String str){
+        SoccerData.Player [] result = new SoccerData.Player[20];
+
+        for(int i =0; i < 20; i++){
+            result[i] = new SoccerData.Player();
+        }
+
+        for(int i =0; i<20; i++){
+            str = str.substring(str.indexOf("<strong>"));
+            result[i].SetRank(Integer.parseInt(str.substring(str.indexOf("<strong>") + "<strong>".length(), str.indexOf("</strong>"))));
+
+            str = str.substring(str.indexOf("alt="));
+            result[i].SetTeam(str.substring(str.indexOf("alt=") + 5, str.indexOf("src") - 1));
+
+            str = str.substring(str.indexOf("name"));
+            result[i].SetName(str.substring(str.indexOf("name") + 6, str.indexOf("</span>")));
+
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetGoal(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetAssist(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetPoint(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetShot(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetFoul(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetBooking(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetDismissal(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetCornerKick(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetPenaltyKick(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetOffside(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetOnTargetShot(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+            str = str.substring(str.indexOf("</span>"));
+            str = str.substring(str.indexOf("<span>"));
+            result[i].SetGame(Integer.parseInt(str.substring(str.indexOf("<span>") + "<span>".length(), str.indexOf("</span>"))));
+
+        }
+
+
 
         return result;
     }

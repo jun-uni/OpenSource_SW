@@ -29,7 +29,6 @@
         </activity>
         <activity android:name=".soccerActivity"/>
         <activity android:name=".baseballActivity"/>
-        <activity android:name=".soccerPlayer"/>
         <activity android:name=".SoccerRanking"/>
     </application>
 

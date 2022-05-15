@@ -121,20 +121,24 @@ public class SoccerData {
      */
 
     static class Player{
-        private int goal_;
-        private int assist_;
-        private int point_;
-        private int shot_;
-        private int foul_;
-        private int booking_;
-        private int dismissal_;
-        private int corner_kick_;
-        private int penalty_kick_;
-        private int offside_;
-        private int on_target_shot_;
-        private int game_;
+        private String team_;       //소속팀
+        private String name_;       //이름
+        private int goal_;          //득점
+        private int assist_;        //도움
+        private int point_;         //공격포인트
+        private int shot_;          //슈팅
+        private int foul_;          //파울
+        private int booking_;       //경고
+        private int dismissal_;     //퇴장
+        private int corner_kick_;   //코너킥
+        private int penalty_kick_;  //페널티킥
+        private int offside_;       //오프사이드
+        private int on_target_shot_;//유효 슈팅
+        private int game_;          //경기수
+        private int rank_;          //득점 순위
 
         Player(){
+            team_ = "";
             goal_ = 0;
             assist_ = 0;
             point_ = 0;
@@ -147,10 +151,17 @@ public class SoccerData {
             offside_ =0;
             on_target_shot_ = 0;
             game_ = 0;
+            rank_ = 0;
         }
 
+        protected void SetTeam(String team){
+            this.team_ = team;
+        }
+
+        protected void SetName(String name) { this.name_ = name; }
+
         protected void SetGoal(int goal) {
-            goal_ = goal;
+            this.goal_ = goal;
         }
 
         protected void SetAssist(int assist){ this.assist_ = assist; }
@@ -175,6 +186,12 @@ public class SoccerData {
 
         protected void SetGame(int game){ this.game_ = game; }
 
+        protected void SetRank(int rank){ this.rank_ = rank; }
+
+        protected String GetTeam() { return this.team_; }
+
+        protected String GetName() { return this.name_; }
+
         protected int GetGoal(){
             return this.goal_;
         }
@@ -187,7 +204,7 @@ public class SoccerData {
 
         protected int GetShot(){ return this.shot_; }
 
-        protected int GetFoul(){ return this.shot_; }
+        protected int GetFoul(){ return this.foul_; }
 
         protected int GetBooking(){ return this.booking_; }
 
@@ -202,6 +219,8 @@ public class SoccerData {
         protected int GetOnTargetShot(){ return this.on_target_shot_; }
 
         protected int GetGame(){ return this.game_; }
+
+        protected int GetRank(){ return this.rank_; }
     }
 
 

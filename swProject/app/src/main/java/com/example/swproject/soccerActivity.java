@@ -24,16 +24,6 @@ public class soccerActivity extends AppCompatActivity {
             }
         });
 
-        Button btnPs = (Button) findViewById(R.id.btnPlayerS);
-        btnPs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),soccerPlayer.class);
-                startActivity(intent);
-
-            }
-        });
-
 
     }
 }
