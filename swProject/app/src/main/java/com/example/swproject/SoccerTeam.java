@@ -26,4 +26,90 @@ public class SoccerTeam {
         drawn_ = 0;
         goal_gap_ = 0;
     }
+
+    protected void SetName(String name){this.name_ = name;}
+
+    protected void SetGoal(int goal){
+        this.goal_ = goal;
+    }
+
+    protected void SetGame(int game){
+        this.game_ = game;
+    }
+
+    protected void SetLastResult(String last_result){
+        this.last_result_ = last_result;
+    }
+
+    protected void SetPoint(int point){
+        this.point_ = point;
+    }
+
+    protected void SetLoseGoal(int lose_goal){
+        this.lose_goal_ = lose_goal;
+    }
+
+    protected void SetRank(int rank){
+        this.rank_ = rank;
+    }
+
+    protected void SetWon(int won){
+        this.won_ = won;
+    }
+
+    protected void SetLost(int lost){
+        this.lost_ = lost;
+    }
+
+    protected void SetDrawn(int drawn){
+        this.drawn_ = drawn;
+    }
+
+    protected void SetGoalGap(int goal_gap){
+        this.goal_gap_ = goal_gap;
+    }
+
+    protected String GetName(){
+        return name_;
+    }
+
+    protected int GetGoal(){
+        return goal_;
+    }
+
+    protected int GetGame(){
+        return game_;
+    }
+
+    protected String GetLastResult(){
+        return last_result_;
+    }
+
+    protected int GetPoint(){
+        return point_;
+    }
+
+    protected int GetLoseGoal(){
+        return lose_goal_;
+    }
+
+    protected int GetRank(){
+        return rank_;
+    }
+
+    protected int GetWon(){
+        return won_;
+    }
+
+    protected int GetLost(){
+        return lost_;
+    }
+
+    protected int GetDrawn(){
+        return drawn_;
+    }
+
+    protected int GetGoalGap(){
+        return goal_gap_;
+    }
 }
