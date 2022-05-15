@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Lifecycle;
 
 public class soccerActivity extends AppCompatActivity {
 
@@ -20,7 +19,7 @@ public class soccerActivity extends AppCompatActivity {
         btnRs.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), soccerRanking.class);
+                Intent intent = new Intent(getApplicationContext(), SoccerRanking.class);
                 startActivity(intent);
             }
         });
