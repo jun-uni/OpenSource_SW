@@ -18,15 +18,15 @@
 
 
     <Button
-        android:id="@+id/btnTeamS"
+        android:id="@+id/btnRankingS"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="360dp"
         android:background="#00ff0000"
-        android:textSize="20dp"
-        android:text="경기 순위"
-        android:textColor="#ffffff"/>
+        android:text="기록 순위"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btnPlayerS"
