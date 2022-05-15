@@ -1,10 +1,12 @@
-package com.example.swproject;
+package com.example.swproject.ui;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
+
+import com.example.swproject.R;
 
 public class baseballActivity extends AppCompatActivity {
     @Override

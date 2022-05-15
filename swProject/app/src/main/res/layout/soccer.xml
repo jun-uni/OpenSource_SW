@@ -29,15 +29,15 @@
         android:textSize="20dp" />
 
     <Button
-        android:id="@+id/btnPlayerS"
+        android:id="@+id/btnScheduleS"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="410dp"
         android:background="#00ff0000"
-        android:textSize="20dp"
-        android:text="뉴스"
-        android:textColor="#ffffff"/>
+        android:text="일정/결과"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btnNewsS"

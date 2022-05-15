@@ -1,4 +1,4 @@
-package com.example.swproject;
+package com.example.swproject.ui;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -6,13 +6,18 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.example.swproject.R;
+import com.example.swproject.data.SoccerData;
+import com.example.swproject.ui.soccerActivity;
+import com.example.swproject.util.MyParser;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
-public class SoccerRanking extends soccerActivity {
+public class SoccerRankingActivity extends soccerActivity {
 
     private TextView team_data_;
     private TextView player_data_;

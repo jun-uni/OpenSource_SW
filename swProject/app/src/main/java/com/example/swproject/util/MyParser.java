@@ -1,7 +1,9 @@
-package com.example.swproject;
+package com.example.swproject.util;
+
+import com.example.swproject.data.SoccerData;
 
 public class MyParser {
-    static SoccerData.Team[] ParseSoccerTeamRanking(String str){
+    public static SoccerData.Team[] ParseSoccerTeamRanking(String str){
         SoccerData.Team[] result = new SoccerData.Team[20];
 
         for(int i =0; i<20;i++){
@@ -48,7 +50,7 @@ public class MyParser {
     }
 
 
-    static SoccerData.Player[] ParseSoccerPlayerRanking(String str){
+    public static SoccerData.Player[] ParseSoccerPlayerRanking(String str){
         SoccerData.Player [] result = new SoccerData.Player[20];
 
         for(int i =0; i < 20; i++){
