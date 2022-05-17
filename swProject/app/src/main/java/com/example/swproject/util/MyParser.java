@@ -147,20 +147,23 @@ public class MyParser {
             }
 
             if(str.contains("fixres__header1")){
-                String tmp_str = str.substring(str.indexOf("fixres__header1") + "fixres__header1".length() + 2);
+                if (str.contains("fixres__header2")) {
+                    if (str.indexOf("fixres__header1") < str.indexOf("fixres__header2")) {
+                        String tmp_str = str.substring(str.indexOf("fixres__header1") + "fixres__header1".length() + 2);
 
-                String months[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+                        String months[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-                for(int i =0; i < 12; i++){
-                    if(months[i].compareTo(tmp_str.substring(0, tmp_str.indexOf(" ")))==0){
-                        tmp_month = i+1;
-                        break;
+                        for (int i = 0; i < 12; i++) {
+                            if (months[i].compareTo(tmp_str.substring(0, tmp_str.indexOf(" "))) == 0) {
+                                tmp_month = i + 1;
+                                break;
+                            }
+                        }
+
+                        tmp_year = Integer.parseInt(tmp_str.substring(tmp_str.indexOf(" ") + 1, tmp_str.indexOf("<")));
                     }
                 }
-
-                tmp_year = Integer.parseInt(tmp_str.substring(tmp_str.indexOf(" ") + 1,tmp_str.indexOf("<")));
             }
-
 
             if(str.contains("fixres__header2")){
                 String tmp_str = str.substring(str.indexOf("fixres__header2"));
@@ -184,34 +187,106 @@ public class MyParser {
             }
 
             str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
-
             tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));
 
             str = str.substring(str.indexOf("matches__teamscores-side") + "matches__teamscores-side".length() + 3);
-
             tmp_schedule.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<") - 1)));
 
             str = str.substring(str.indexOf("matches__teamscores-side") + "matches__teamscores-side".length() + 3);
-
             tmp_schedule.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<") - 1)));
 
             str = str.substring(str.indexOf("matches__date") + "matches__date".length() + 3);
-
             tmp_hour = Integer.parseInt(str.substring(0, str.indexOf(":")));
-
             tmp_min = Integer.parseInt(str.substring(str.indexOf(":") + 1, str.indexOf(" ")));
-
             LocalTime tmp_time = LocalTime.of(tmp_hour, tmp_min);
-
             ZonedDateTime tmp_datetime = ZonedDateTime.of(tmp_date, tmp_time, ZoneId.of("Asia/Seoul"));
 
             str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
-
             tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
 
             tmp_schedule.SetDate(tmp_datetime);
 
-            if(tmp_datetime.isBefore(ZonedDateTime.now().minusMonths(3))){
+
+            result.add(tmp_schedule);
+        }
+        return result;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static List<Schedule> ParseSoccerResult(String str){
+        List<Schedule> result = new ArrayList<Schedule>();
+
+        LocalDate tmp_date = LocalDate.now();
+        int tmp_year = 0, tmp_day = 0, tmp_month = 0, tmp_hour = 0, tmp_min = 0;
+
+        while(str.contains("swap-text__target")){
+            if(str.substring(str.indexOf("swap-text__target") + "swap-text__target".length()).indexOf("</span>") > 30){
+                str = str.substring(str.indexOf("swap-text__target"));
+                str = str.substring(str.indexOf("</a>"));
+                continue;
+            }
+
+            if(str.contains("fixres__header1")){
+                if (str.contains("fixres__header2")) {
+                    if (str.indexOf("fixres__header1") < str.indexOf("fixres__header2")) {
+                        String tmp_str = str.substring(str.indexOf("fixres__header1") + "fixres__header1".length() + 2);
+
+                        String months[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
+                        for (int i = 0; i < 12; i++) {
+                            if (months[i].compareTo(tmp_str.substring(0, tmp_str.indexOf(" "))) == 0) {
+                                tmp_month = i + 1;
+                                break;
+                            }
+                        }
+
+                        tmp_year = Integer.parseInt(tmp_str.substring(tmp_str.indexOf(" ") + 1, tmp_str.indexOf("<")));
+                    }
+                }
+            }
+
+            if(str.contains("fixres__header2")){
+                String tmp_str = str.substring(str.indexOf("fixres__header2"));
+                tmp_str = tmp_str.substring(tmp_str.indexOf("fixres__header2") + "fixres__header2".length() + 2, tmp_str.indexOf("<"));
+                tmp_str = tmp_str.substring(tmp_str.indexOf(" ") + 1);
+                tmp_str = tmp_str.substring(0, tmp_str.indexOf(" "));
+                tmp_day = Integer.parseInt(tmp_str.replaceAll("[^0-9]",""));
+                tmp_date = LocalDate.of(tmp_year, tmp_month, tmp_day);
+
+                System.out.println(tmp_date);
+            }
+
+            Schedule tmp_schedule = new Schedule();
+
+            str = str.substring(str.indexOf("data-status=") + "data-status=".length());
+
+            if(str.substring(1, str.indexOf(">") - 1).compareTo("IP") == 0){
+                tmp_schedule.SetIsPlaying(true);
+            }else{
+                tmp_schedule.SetIsPlaying(false);
+            }
+
+            str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
+            tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));
+
+            str = str.substring(str.indexOf("matches__teamscores-side") + "matches__teamscores-side".length() + 3);
+            tmp_schedule.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<") - 1)));
+
+            str = str.substring(str.indexOf("matches__teamscores-side") + "matches__teamscores-side".length() + 3);
+            tmp_schedule.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<") - 1)));
+
+            str = str.substring(str.indexOf("matches__date") + "matches__date".length() + 3);
+            tmp_hour = Integer.parseInt(str.substring(0, str.indexOf(":")));
+            tmp_min = Integer.parseInt(str.substring(str.indexOf(":") + 1, str.indexOf(" ")));
+            LocalTime tmp_time = LocalTime.of(tmp_hour, tmp_min);
+            ZonedDateTime tmp_datetime = ZonedDateTime.of(tmp_date, tmp_time, ZoneId.of("Asia/Seoul"));
+
+            str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
+            tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
+
+            tmp_schedule.SetDate(tmp_datetime);
+
+            if(tmp_schedule.GetDate().isBefore(ZonedDateTime.now().minusMonths(3))){
                 break;
             }
 
@@ -219,5 +294,4 @@ public class MyParser {
         }
         return result;
     }
-
 }

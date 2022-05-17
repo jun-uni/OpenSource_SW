@@ -23,8 +23,10 @@ import java.util.List;
 
 public class SoccerScheduleActivity extends soccerActivity {
     private TextView schedule_;
+    private TextView result_;
 
     private final String schedule_url_ = "https://www.skysports.com/premier-league-fixtures";
+    private final String result_url_ = "https://www.skysports.com/premier-league-results";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +34,9 @@ public class SoccerScheduleActivity extends soccerActivity {
         setContentView(R.layout.soccer_schedule);
 
         schedule_ = (TextView)findViewById(R.id.text_schedule);
+        result_ = (TextView)findViewById(R.id.text_result);
         new GetSchedule().execute(schedule_url_);
+        new GetResult().execute(result_url_);
 
     }
 
@@ -68,6 +72,41 @@ public class SoccerScheduleActivity extends soccerActivity {
             }
 
             schedule_.setText(str);
+        }
+    }
+
+    private class GetResult extends AsyncTask<String, Void, List<Schedule>> {
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        protected List<Schedule> doInBackground(String... params){
+            try {
+                Document doc = null;
+
+                doc = Jsoup.connect(result_url_).get();
+                Elements data = doc.select("div.fixres__body");
+                return MyParser.ParseSoccerResult(data.last().toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        protected void onPostExecute(List<Schedule> data){
+            /*
+            데이터 표시 예시
+            디자인은 추후 변경 요망
+            데이터 종류와 관련 메소드는 SoccerSchedule 클래스 참고
+             */
+            String str = "";
+            for(Schedule i : data){
+                str += i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n";
+                if(i.GetIsPlaying())
+                    str+= "[진행중] ";
+                str += i.GetTeamLeft().GetName() + " : " + i.GetTeamRight().GetName() + " [" + i.GetTeamLeft().GetScore() + " : " + i.GetTeamRight().GetScore() + "]\n";
+            }
+
+            result_.setText(str);
         }
     }
 }
