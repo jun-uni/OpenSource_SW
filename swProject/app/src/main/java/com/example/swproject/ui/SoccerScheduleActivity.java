@@ -41,6 +41,9 @@ public class SoccerScheduleActivity extends soccerActivity {
     }
 
     private class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
+        /*
+        경기 일정 및 실시간 경기 정보
+         */
         @RequiresApi(api = Build.VERSION_CODES.O)
         protected List<Schedule> doInBackground(String... params){
             try {
@@ -76,6 +79,9 @@ public class SoccerScheduleActivity extends soccerActivity {
     }
 
     private class GetResult extends AsyncTask<String, Void, List<Schedule>> {
+        /*
+        과거 경기 결과
+         */
         @RequiresApi(api = Build.VERSION_CODES.O)
         protected List<Schedule> doInBackground(String... params){
             try {

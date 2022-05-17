@@ -36,6 +36,9 @@ public class SoccerRankingActivity extends soccerActivity {
     }
 
     private class GetTeamData extends AsyncTask<String, Void, SoccerData.Team[]>{
+        /*
+        팀 순위 가져오기
+         */
         protected SoccerData.Team[] doInBackground(String... params){
             try {
                 Document doc = null;
@@ -67,6 +70,9 @@ public class SoccerRankingActivity extends soccerActivity {
 
 
     private class GetPlayerData extends AsyncTask<String, Void, SoccerData.Player[]>{
+        /*
+        유저 순위 가져오기
+         */
         protected SoccerData.Player[] doInBackground(String... params){
             try {
                 Document doc = null;
