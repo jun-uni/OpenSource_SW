@@ -175,6 +175,14 @@ public class MyParser {
 
             Schedule tmp_schedule = new Schedule();
 
+            str = str.substring(str.indexOf("data-status=") + "data-status=".length());
+
+            if(str.substring(1, str.indexOf(">") - 1).compareTo("IP") == 0){
+                tmp_schedule.SetIsPlaying(true);
+            }else{
+                tmp_schedule.SetIsPlaying(false);
+            }
+
             str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
 
             tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));
@@ -182,6 +190,10 @@ public class MyParser {
             str = str.substring(str.indexOf("matches__teamscores-side") + "matches__teamscores-side".length() + 3);
 
             tmp_schedule.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<") - 1)));
+
+            str = str.substring(str.indexOf("matches__teamscores-side") + "matches__teamscores-side".length() + 3);
+
+            tmp_schedule.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<") - 1)));
 
             str = str.substring(str.indexOf("matches__date") + "matches__date".length() + 3);
 

@@ -24,7 +24,7 @@ import java.util.List;
 public class SoccerScheduleActivity extends soccerActivity {
     private TextView schedule_;
 
-    private final String url_ = "https://www.skysports.com/premier-league-fixtures";
+    private final String schedule_url_ = "https://www.skysports.com/premier-league-fixtures";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class SoccerScheduleActivity extends soccerActivity {
         setContentView(R.layout.soccer_schedule);
 
         schedule_ = (TextView)findViewById(R.id.text_schedule);
-        new GetSchedule().execute(url_);
+        new GetSchedule().execute(schedule_url_);
 
     }
 
@@ -42,7 +42,7 @@ public class SoccerScheduleActivity extends soccerActivity {
             try {
                 Document doc = null;
 
-                doc = Jsoup.connect(url_).get();
+                doc = Jsoup.connect(schedule_url_).get();
                 Elements data = doc.select("div.fixres__body");
                 return MyParser.ParseSoccerSchedule(data.last().toString());
             } catch (IOException e) {
@@ -62,6 +62,8 @@ public class SoccerScheduleActivity extends soccerActivity {
             String str = "";
             for(Schedule i : data){
                 str += i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n";
+                if(i.GetIsPlaying())
+                    str+= "[진행중] ";
                 str += i.GetTeamLeft().GetName() + " : " + i.GetTeamRight().GetName() + " [" + i.GetTeamLeft().GetScore() + " : " + i.GetTeamRight().GetScore() + "]\n";
             }
 

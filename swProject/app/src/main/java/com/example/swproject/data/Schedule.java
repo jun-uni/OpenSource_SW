@@ -11,12 +11,14 @@ public class Schedule {
     private ZonedDateTime date_;             //경기 날짜, 시간
     private Team left_;
     private Team right_;
+    private boolean isPlaying_;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Schedule(){
        date_ = ZonedDateTime.now();
        left_ = new Team();
        right_ = new Team();
+       isPlaying_ = false;
     }
 
     public static class Team{
@@ -55,9 +57,13 @@ public class Schedule {
 
     public void SetTeamRight(Team team) { this.right_ = team; }
 
+    public void SetIsPlaying(boolean isPlaying) { this.isPlaying_ = isPlaying; }
+
     public Team GetTeamLeft() { return this.left_; }
 
     public Team GetTeamRight() { return this.right_; }
 
     public ZonedDateTime GetDate() { return this.date_; }
+
+    public boolean GetIsPlaying() { return this.isPlaying_; }
 }
