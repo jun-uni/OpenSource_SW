@@ -26,6 +26,15 @@ public class soccerActivity extends AppCompatActivity {
             }
         });
 
+        Button btnSs = (Button) findViewById(R.id.btnScheduleS);
+        btnSs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SoccerScheduleActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
