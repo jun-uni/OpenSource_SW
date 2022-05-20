@@ -131,10 +131,10 @@ public class MyParser {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<Schedule> ParseSoccerSchedule(String str){
-        List<Schedule> result = new ArrayList<Schedule>();
+        List<Schedule> result = new ArrayList<>();
 
         LocalDate tmp_date = LocalDate.now();
-        int tmp_year = 0, tmp_day = 0, tmp_month = 0, tmp_hour = 0, tmp_min = 0;
+        int tmp_year = 0, tmp_day, tmp_month = 0, tmp_hour, tmp_min;
 
         while(str.contains("swap-text__target")){
             if(str.substring(str.indexOf("swap-text__target") + "swap-text__target".length()).indexOf("</span>") > 30){
@@ -148,7 +148,7 @@ public class MyParser {
                     if (str.indexOf("fixres__header1") < str.indexOf("fixres__header2")) {
                         String tmp_str = str.substring(str.indexOf("fixres__header1") + "fixres__header1".length() + 2);
 
-                        String months[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+                        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
                         for (int i = 0; i < 12; i++) {
                             if (months[i].compareTo(tmp_str.substring(0, tmp_str.indexOf(" "))) == 0) {
@@ -177,11 +177,7 @@ public class MyParser {
 
             str = str.substring(str.indexOf("data-status=") + "data-status=".length());
 
-            if(str.substring(1, str.indexOf(">") - 1).compareTo("IP") == 0){
-                tmp_schedule.SetIsPlaying(true);
-            }else{
-                tmp_schedule.SetIsPlaying(false);
-            }
+            tmp_schedule.SetIsPlaying(str.substring(1, str.indexOf(">") - 1).compareTo("IP") == 0);
 
             str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
             tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));
@@ -211,10 +207,10 @@ public class MyParser {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<Schedule> ParseSoccerResult(String str){
-        List<Schedule> result = new ArrayList<Schedule>();
+        List<Schedule> result = new ArrayList<>();
 
         LocalDate tmp_date = LocalDate.now();
-        int tmp_year = 0, tmp_day = 0, tmp_month = 0, tmp_hour = 0, tmp_min = 0;
+        int tmp_year = 0, tmp_day, tmp_month = 0, tmp_hour, tmp_min;
 
         while(str.contains("swap-text__target")){
             if(str.substring(str.indexOf("swap-text__target") + "swap-text__target".length()).indexOf("</span>") > 30){
@@ -228,7 +224,7 @@ public class MyParser {
                     if (str.indexOf("fixres__header1") < str.indexOf("fixres__header2")) {
                         String tmp_str = str.substring(str.indexOf("fixres__header1") + "fixres__header1".length() + 2);
 
-                        String months[] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+                        String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
                         for (int i = 0; i < 12; i++) {
                             if (months[i].compareTo(tmp_str.substring(0, tmp_str.indexOf(" "))) == 0) {
@@ -257,11 +253,7 @@ public class MyParser {
 
             str = str.substring(str.indexOf("data-status=") + "data-status=".length());
 
-            if(str.substring(1, str.indexOf(">") - 1).compareTo("IP") == 0){
-                tmp_schedule.SetIsPlaying(true);
-            }else{
-                tmp_schedule.SetIsPlaying(false);
-            }
+            tmp_schedule.SetIsPlaying(str.substring(1, str.indexOf(">") - 1).compareTo("IP") == 0);
 
             str = str.substring(str.indexOf("swap-text__target") + "swap-text__target".length() + 2);
             tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));

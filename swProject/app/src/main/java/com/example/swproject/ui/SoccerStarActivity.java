@@ -1,18 +1,18 @@
 package com.example.swproject.ui;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
 import androidx.annotation.RequiresApi;
 
 import com.example.swproject.R;
-import com.example.swproject.data.Schedule;
 import com.example.swproject.data.SoccerData;
 import com.example.swproject.util.MyParser;
 
@@ -21,8 +21,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class SoccerStarActivity extends soccerActivity{
     private TextView live_data_;
@@ -38,17 +36,13 @@ public class SoccerStarActivity extends soccerActivity{
 
         new GetLive().execute(schedule_url_);
 
-        live_data_ = (TextView)findViewById(R.id.text_live);
+        live_data_ = findViewById(R.id.text_live);
 
-        Button btnRefresh = (Button) findViewById(R.id.btnRefresh);
-        btnRefresh.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                new GetLive().execute(schedule_url_);
-            }
-        });
+        Button btnRefresh = findViewById(R.id.btnRefresh);
+        btnRefresh.setOnClickListener(view -> new GetLive().execute(schedule_url_));
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetLive extends AsyncTask<String, Void, Void> {
         /*
         실시간 경기 정보
@@ -56,7 +50,7 @@ public class SoccerStarActivity extends soccerActivity{
         @RequiresApi(api = Build.VERSION_CODES.O)
         protected Void doInBackground(String... params){
             try {
-                Document doc = null;
+                Document doc;
 
                 doc = Jsoup.connect(schedule_url_).get();
                 Elements data = doc.select("div.widget-entity-matches__list");
@@ -75,7 +69,6 @@ public class SoccerStarActivity extends soccerActivity{
             return null;
         }
 
-        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected void onPostExecute(Void a){
             //is_playing_ = true; //나중에 지워야됨
@@ -88,13 +81,14 @@ public class SoccerStarActivity extends soccerActivity{
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetData extends AsyncTask<String, Void, SoccerData.LiveData> {
         /*
         실시간 경기 정보
          */
         protected SoccerData.LiveData doInBackground(String... params){
             try {
-                Document doc = null;
+                Document doc;
 
                 doc = Jsoup.connect(playing_url_).get();
                 Elements data = doc.select("body");
@@ -108,6 +102,10 @@ public class SoccerStarActivity extends soccerActivity{
 
         @Override
         protected void onPostExecute(SoccerData.LiveData data){
+            /*
+            경기 실시간 정보 표시 예시
+            디자인 추후 변경 요망
+             */
             String str = "";
 
             str += data.GetTeamLeft().GetName() + " vs " + data.GetTeamRight().GetName() + "\n";

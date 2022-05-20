@@ -1,5 +1,6 @@
 package com.example.swproject.ui;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,9 +18,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.nio.channels.ShutdownChannelGroupException;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SoccerScheduleActivity extends soccerActivity {
@@ -35,13 +34,14 @@ public class SoccerScheduleActivity extends soccerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_schedule);
 
-        schedule_ = (TextView)findViewById(R.id.text_schedule);
-        result_ = (TextView)findViewById(R.id.text_result);
+        schedule_ = findViewById(R.id.text_schedule);
+        result_ = findViewById(R.id.text_result);
         new GetSchedule().execute(schedule_url_);
         new GetResult().execute(result_url_);
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
         /*
         경기 일정 및 실시간 경기 정보
@@ -49,7 +49,7 @@ public class SoccerScheduleActivity extends soccerActivity {
         @RequiresApi(api = Build.VERSION_CODES.O)
         protected List<Schedule> doInBackground(String... params){
             try {
-                Document doc = null;
+                Document doc;
 
                 doc = Jsoup.connect(schedule_url_).get();
                 Elements data = doc.select("div.fixres__body");
@@ -68,18 +68,19 @@ public class SoccerScheduleActivity extends soccerActivity {
             디자인은 추후 변경 요망
             데이터 종류와 관련 메소드는 SoccerSchedule 클래스 참고
              */
-            String str = "";
+            StringBuilder str = new StringBuilder();
             for(Schedule i : data){
-                str += i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n";
+                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("\n");
                 if(i.GetIsPlaying())
-                    str+= "[진행중] ";
-                str += i.GetTeamLeft().GetName() + " : " + i.GetTeamRight().GetName() + " [" + i.GetTeamLeft().GetScore() + " : " + i.GetTeamRight().GetScore() + "]\n";
+                    str.append("[진행중] ");
+                str.append(i.GetTeamLeft().GetName()).append(" : ").append(i.GetTeamRight().GetName()).append(" [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]\n");
             }
 
-            schedule_.setText(str);
+            schedule_.setText(str.toString());
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetResult extends AsyncTask<String, Void, List<Schedule>> {
         /*
         과거 경기 결과
@@ -87,7 +88,7 @@ public class SoccerScheduleActivity extends soccerActivity {
         @RequiresApi(api = Build.VERSION_CODES.O)
         protected List<Schedule> doInBackground(String... params){
             try {
-                Document doc = null;
+                Document doc;
 
                 doc = Jsoup.connect(result_url_).get();
                 Elements data = doc.select("div.fixres__body");
@@ -106,17 +107,17 @@ public class SoccerScheduleActivity extends soccerActivity {
             디자인은 추후 변경 요망
             데이터 종류와 관련 메소드는 SoccerSchedule 클래스 참고
              */
-            String str = "";
+            StringBuilder str = new StringBuilder();
             for(Schedule i : data){
-                str += i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n";
+                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("\n");
                 if(i.GetIsPlaying()){
-                    str+= "[진행중] ";
+                    str.append("[진행중] ");
                 }
 
-                str += i.GetTeamLeft().GetName() + " : " + i.GetTeamRight().GetName() + " [" + i.GetTeamLeft().GetScore() + " : " + i.GetTeamRight().GetScore() + "]\n";
+                str.append(i.GetTeamLeft().GetName()).append(" : ").append(i.GetTeamRight().GetName()).append(" [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]\n");
             }
 
-            result_.setText(str);
+            result_.setText(str.toString());
         }
     }
 }
