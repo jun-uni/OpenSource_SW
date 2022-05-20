@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 
 import com.example.swproject.R;
 import com.example.swproject.data.SoccerData;
-import com.example.swproject.ui.soccerActivity;
 import com.example.swproject.util.MyParser;
 
 import org.jsoup.Jsoup;

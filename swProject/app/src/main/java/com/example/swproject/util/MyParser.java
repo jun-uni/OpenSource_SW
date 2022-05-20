@@ -291,4 +291,58 @@ public class MyParser {
         }
         return result;
     }
+
+    public static SoccerData.LiveData ParseSoccerLiveData(String str){
+       SoccerData.LiveData result = new SoccerData.LiveData();
+
+       str = str.substring(str.indexOf("widget-match-header__name--full"));
+
+       result.GetTeamLeft().SetName(str.substring(str.indexOf(">") + 1, str.indexOf("<")));
+
+       str = str.substring(str.indexOf("<span data-slot=\"score\">") + "<span data-slot=\"score\">".length());
+
+       result.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf(" "))));
+
+       str = str.substring(str.indexOf("-") + 2);
+
+       result.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+       str = str.substring(str.indexOf("widget-match-header__name--full"));
+
+       result.GetTeamRight().SetName(str.substring(str.indexOf(">") + 1, str.indexOf("<")));
+
+       str = str.substring(str.indexOf("점유율"));
+
+       result.GetTeamLeft().SetPossession(Integer.parseInt(str.substring(str.indexOf("lbl lbl-home") + "lbl lbl-home".length() + 9, str.indexOf("%"))));
+
+       str = str.substring(str.indexOf("lbl lbl-away"));
+
+       result.GetTeamRight().SetPossession(Integer.parseInt(str.substring(str.indexOf("lbl lbl-away") + "lbl lbl-away".length() + 9, str.indexOf("%"))));
+
+       str = str.substring(str.indexOf("value-home"));
+
+       result.GetTeamLeft().SetMissedShot(Integer.parseInt(str.substring(str.indexOf("value-home") + "value-home".length() + 2, str.indexOf("<"))));
+
+       str = str.substring(str.indexOf("value-away"));
+
+       result.GetTeamRight().SetMissedShot(Integer.parseInt(str.substring(str.indexOf("value-away") + "value-away".length() + 2, str.indexOf("<"))));
+
+       str = str.substring(str.indexOf("value-home"));
+
+       result.GetTeamLeft().SetOnTargetShot(Integer.parseInt(str.substring(str.indexOf("value-home") + "value-home".length() + 2, str.indexOf("<"))));
+
+       str = str.substring(str.indexOf("value-away"));
+
+       result.GetTeamRight().SetOnTargetShot(Integer.parseInt(str.substring(str.indexOf("value-away") + "value-away".length() + 2, str.indexOf("<"))));
+
+       str = str.substring(str.indexOf("value-home"));
+
+       result.GetTeamLeft().SetTotalPass(Integer.parseInt(str.substring(str.indexOf("value-home") + "value-home".length() + 2, str.indexOf("<"))));
+
+       str = str.substring(str.indexOf("value-away"));
+
+       result.GetTeamRight().SetTotalPass(Integer.parseInt(str.substring(str.indexOf("value-away") + "value-away".length() + 2, str.indexOf("<"))));
+
+       return result;
+    }
 }
