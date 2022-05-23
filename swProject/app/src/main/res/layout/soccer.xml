@@ -6,7 +6,7 @@
 
 
     <Button
-        android:id="@+id/btnstarS"
+        android:id="@+id/btnNewsS"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -40,7 +40,7 @@
         android:textSize="20dp" />
 
     <Button
-        android:id="@+id/btnNewsS"
+        android:id="@+id/btnStarS"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"

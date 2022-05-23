@@ -223,6 +223,68 @@ public class SoccerData {
         public int GetRank(){ return this.rank_; }
     }
 
+    public static class LiveData{
+        private Team left_;
+        private Team right_;
 
+        public LiveData(){
+            left_ = new Team();
+            right_ = new Team();
+        }
+
+        public static class Team{
+            private String name_;       //팀 이름
+            private int score_;         //점수
+            private int possession_;    //점유율
+            private int missed_shot_;   //빗나간 슈팅
+            private int on_target_shot_;//유효 슈팅
+            private int total_pass_;    //총 패스
+
+            public Team(){
+                name_ = "";
+                score_ = 0;
+                possession_ = 0;
+                missed_shot_ = 0;
+                on_target_shot_ = 0;
+                total_pass_ = 0;
+            }
+
+            public void SetName(String name){
+                this.name_ = name;
+            }
+
+            public void SetScore(int score){
+                this.score_ = score;
+            }
+
+            public void SetPossession(int possession) { this.possession_ = possession; }
+
+            public void SetMissedShot(int missed_shot) { this.missed_shot_ = missed_shot; }
+
+            public void SetOnTargetShot(int on_target_shot) { this.on_target_shot_ = on_target_shot; }
+
+            public void SetTotalPass(int total_pass) { this.total_pass_ = total_pass; }
+
+            public String GetName(){ return this.name_; }
+
+            public int GetScore(){ return this.score_; }
+
+            public int GetPossession(){ return this.possession_; }
+
+            public int GetMissedShot() { return this.missed_shot_; }
+
+            public int GetOnTargetShot() { return this.on_target_shot_; }
+
+            public int GetTotalPass() { return this.total_pass_; }
+        }
+
+        public void SetTeamLeft(Team left) { this.left_ = left; }
+
+        public void SetTeamRight(Team right) { this.right_ = right; }
+
+        public Team GetTeamLeft() { return this.left_; }
+
+        public Team GetTeamRight() { return this.right_; }
+    }
 }
 
