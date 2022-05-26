@@ -1,5 +1,6 @@
 package com.example.swproject.ui;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -8,7 +9,6 @@ import androidx.annotation.Nullable;
 
 import com.example.swproject.R;
 import com.example.swproject.data.SoccerData;
-import com.example.swproject.ui.soccerActivity;
 import com.example.swproject.util.MyParser;
 
 import org.jsoup.Jsoup;
@@ -29,16 +29,20 @@ public class SoccerRankingActivity extends soccerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_ranking);
 
-        team_data_ = (TextView)findViewById(R.id.text_team_ranking);
-        player_data_ = (TextView)findViewById(R.id.text_player_ranking);
+        team_data_ = findViewById(R.id.text_team_ranking);
+        player_data_ = findViewById(R.id.text_player_ranking);
         new GetTeamData().execute(team_url_);
         new GetPlayerData().execute(player_url_);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class GetTeamData extends AsyncTask<String, Void, SoccerData.Team[]>{
+        /*
+        팀 순위 가져오기
+         */
         protected SoccerData.Team[] doInBackground(String... params){
             try {
-                Document doc = null;
+                Document doc;
 
                 doc = Jsoup.connect(team_url_).get();
                 Elements data = doc.select("#content script");
@@ -56,20 +60,24 @@ public class SoccerRankingActivity extends soccerActivity {
             디자인은 추후 변경 요망
             데이터 종류와 관련 메소드는 SoccerData 클래스 참고
              */
-            String str = "";
+            StringBuilder str = new StringBuilder();
 
             for(int i =0; i< 20; i++){
-                str += data[i].GetRank() + "위: " + data[i].GetName() + " " + data[i].GetWon() + "승 " + data[i].GetLost() + "패 " + data[i].GetDrawn() + "무 " + data[i].GetPoint() + "승점\n";
+                str.append(data[i].GetRank()).append("위: ").append(data[i].GetName()).append(" ").append(data[i].GetWon()).append("승 ").append(data[i].GetLost()).append("패 ").append(data[i].GetDrawn()).append("무 ").append(data[i].GetPoint()).append("승점\n");
             }
-            team_data_.setText(str);
+            team_data_.setText(str.toString());
         }
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private class GetPlayerData extends AsyncTask<String, Void, SoccerData.Player[]>{
+        /*
+        유저 순위 가져오기
+         */
         protected SoccerData.Player[] doInBackground(String... params){
             try {
-                Document doc = null;
+                Document doc;
 
                 doc = Jsoup.connect(player_url_).get();
                 Elements data = doc.select("#content #wfootballPlayerRecordBody table tbody td");
@@ -87,13 +95,13 @@ public class SoccerRankingActivity extends soccerActivity {
             디자인은 추후 변경 요망
             데이터 종류와 관련 메소드는 SoccerData 클래스 참고
              */
-            String str = "[득점 순위]\n";
+            StringBuilder str = new StringBuilder("[득점 순위]\n");
 
             for(int i =0; i< 20; i++){
-                str += data[i].GetRank() + "위: " + data[i].GetName() + " " + data[i].GetGoal() + "득점 " + data[i].GetPoint() + "공격포인트\n";
+                str.append(data[i].GetRank()).append("위: ").append(data[i].GetName()).append(" ").append(data[i].GetGoal()).append("득점 ").append(data[i].GetPoint()).append("공격포인트\n");
             }
 
-            player_data_.setText(str);
+            player_data_.setText(str.toString());
         }
     }
 }
