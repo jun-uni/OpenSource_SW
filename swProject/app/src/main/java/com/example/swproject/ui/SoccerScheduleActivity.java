@@ -36,7 +36,7 @@ public class SoccerScheduleActivity extends soccerActivity {
 
         schedule_ = findViewById(R.id.text_schedule);
         result_ = findViewById(R.id.text_result);
-        new GetSchedule().execute(schedule_url_);
+       //new GetSchedule().execute(schedule_url_); //일정이 끝나서 오류
         new GetResult().execute(result_url_);
 
     }
