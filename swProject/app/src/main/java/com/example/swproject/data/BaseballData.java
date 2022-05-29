@@ -9,10 +9,11 @@ public class BaseballData {
         private String team_code_;          //팀 코드
         private int game_;                  //경기 횟수
         private String win_rate_;           //승률
-        private int rank_;               //순위
-        private int won_;                //승리
-        private int drawn_;              //무승부
-        private int lost_;               //패배
+        private String win_diff_;           //게임차
+        private int rank_;                  //순위
+        private int won_;                   //승리
+        private int drawn_;                 //무승부
+        private int lost_;                  //패배
         private String streak_;             //연속 승리/패배
         private String on_base_percentage_; //출루율
         private String slugging_percentage_;//장타율
@@ -23,6 +24,7 @@ public class BaseballData {
             team_code_ = "";
             game_ = 0;
             win_rate_ = "";
+            win_diff_ = "";
             rank_ = 0;
             won_ = 0;
             drawn_ = 0;
@@ -41,11 +43,15 @@ public class BaseballData {
 
         public void SetWinRate(String win_rate) { this.win_rate_ = win_rate; }
 
+        public void SetWinDiff(String win_diff) { this.win_diff_ = win_diff; }
+
         public void SetRank(int rank) { this.rank_ = rank; }
 
         public void SetWon(int won) { this.won_ = won; }
 
         public void SetLost(int lost) { this.lost_ = lost; }
+
+        public void SetDrawn(int drawn) { this.drawn_ = drawn; }
 
         public void SetStreak(String streak) { this.streak_ = streak; }
 
@@ -63,11 +69,15 @@ public class BaseballData {
 
         public String GetWinRate() { return this.win_rate_; }
 
+        public String GetWinDiff() { return this.win_diff_; }
+
         public int GetRank() { return this.rank_; }
 
         public int GetWon() { return this.won_; }
 
         public int GetLost() { return this.lost_; }
+
+        public int GetDrawn() { return this.drawn_; }
 
         public String GetStreak() { return this.streak_; }
 
@@ -88,29 +98,28 @@ public class BaseballData {
          */
         private String team_;                               //소속팀
         private String name_;                               //이름
-        private String strike_out_per_plate_appearances_;    //타석 당 삼진 비율 pa_kk_rt
-        private String strike_out_per_base_on_balls_;        //볼넷 당 삼진 비율 kk_bb_rt
+        private String strike_out_per_plate_appearances_;    //타석 당 삼진 비율 "K%" 로 표시
+        private String strike_out_per_base_on_balls_;        //볼넷 당 삼진 비율 "K/BB" 로 표시
         private int dead_ball_;                             //사구 hp
         private int home_run_;                              //피홈런
         private int hit_;                                   //피안타
         private int hold_;                                  //홀드
         private String whip_;                               //WHIP
-        private String strike_out_per_nine_innings_;         //9이닝 당 삼진 수 innk
+        private String strike_out_per_nine_innings_;         //9이닝 당 삼진 수 "K/9"로 표시
         private String earned_run_average_;                 //평균자책점 era
         private int rank_;                                  //평균 자책 순위
         private int strike_out_;                             //탈삼진
-        private int save_;                                  //세이브 sv
-        private String win_rate_;                           //승률 winp
-        private String innings_;                            //이닝 inn
-        private String base_on_balls_per_nine_innings_;     //9이닝 당 볼넷 수 innb
+        private int save_;                                  //세이브
+        private String win_rate_;                           //승률
+        private String innings_;                            //이닝
+        private String base_on_balls_per_nine_innings_;     //9이닝 당 볼넷 수 "BB/9"로 표시
         private String war_;                                //WAR
         private String wpa_;                                //WPA
         private int lost_;                                  //패
         private int won_;                                   //승
         private int game_;                                  //게임 수
         private int runs_;                                  //실점 r
-        private String base_on_balls_per_plate_appearances_;//타석 당 볼넷 비율 pa_bb_rt
-
+        private String base_on_balls_per_plate_appearances_;//타석 당 볼넷 비율 "BB%"로 표시
 
         public Pitcher(){
             team_ = "";
@@ -297,13 +306,13 @@ public class BaseballData {
         private int rank_;                                  //타율 순위
         private int strike_out_;                            //삼진
         private String woba_;                               //wOBA
-        private String at_bat_;                             //타수
+        private int at_bat_;                             //타수
         private String wpa_;                                //WPA
         private String war_;                                //WAR
         private String slugging_percentage_;                //장타율 slg
         private int game_;                                  //게임 수
         private String ops_;                                //OPS
-        private String run_batted_in_;                      //타점 rbi
+        private int run_batted_in_;                      //타점 rbi
         private String babip_;                              //BABIP
         private String isop_;                               //IsoP
         private String on_base_percentage_;                 //출루율 obp
@@ -322,13 +331,13 @@ public class BaseballData {
             rank_  = 0;
             woba_ = "";
             strike_out_ = 0;
-            at_bat_ = "";
+            at_bat_ = 0;
             wpa_ = "";
             war_ = "";
             slugging_percentage_ = "";
             game_ = 0;
             ops_ = "";
-            run_batted_in_ = "";
+            run_batted_in_ = 0;
             babip_ = "";
             isop_ = "";
             on_base_percentage_ = "";
@@ -360,7 +369,7 @@ public class BaseballData {
 
         public void SetStrikeOut(int strike_out) { this.strike_out_ = strike_out; }
 
-        public void SetAtBat(String at_bat) { this.at_bat_ = at_bat; }
+        public void SetAtBat(int at_bat) { this.at_bat_ = at_bat; }
 
         public void SetWpa(String wpa) { this.wpa_ = wpa; }
 
@@ -372,7 +381,7 @@ public class BaseballData {
 
         public void SetOps(String ops) { this.ops_ = ops; }
 
-        public void SetRunBattedIn(String run_batted_in_) { this.run_batted_in_ = run_batted_in_; }
+        public void SetRunBattedIn(int run_batted_in_) { this.run_batted_in_ = run_batted_in_; }
 
         public void SetBabip(String babip) { this.babip_ = babip; }
 
@@ -380,6 +389,51 @@ public class BaseballData {
 
         public void SetOnBasePercentage(String on_base_percentage) { this.on_base_percentage_ = on_base_percentage; }
 
+        public String GetName() { return this.name_; }
+
+        public String GetTeam() { return this.team_; }
+
+        public String GetWrcPlus() { return this.wrc_plus_; }
+
+        public int GetHomeRun() { return this.home_run_; }
+
+        public int GetRun() { return this.run_; }
+
+        public int GetHit() { return this.hit_; }
+
+        public int GetHit2() { return this.hit_2_; }
+
+        public int GetHit3() { return this.hit_3_; }
+
+        public int GetStolenBase() { return this.stolen_base_; }
+
+        public String GetHitRate() { return this.hit_rate_; }
+
+        public int GetRank() { return this.rank_; }
+
+        public String GetWoba() { return this.woba_; }
+
+        public int GetStrikeOut() { return this.strike_out_; }
+
+        public int GetAtBat() { return this.at_bat_; }
+
+        public String GetWpa() { return this.wpa_; }
+
+        public String GetWar(){ return this.war_; }
+
+        public String GetSluggingPercentage() { return this.slugging_percentage_; }
+
+        public int GetGame() { return this.game_; }
+
+        public String GetOps() { return this.ops_; }
+
+        public int GetRunBattedIn() { return this.run_batted_in_; }
+
+        public String GetBabip() { return this.babip_; }
+
+        public String GetIsop() { return this.isop_; }
+
+        public String GetOnBasePercentage() { return this.on_base_percentage_; }
     }
 
     public static class LiveData{

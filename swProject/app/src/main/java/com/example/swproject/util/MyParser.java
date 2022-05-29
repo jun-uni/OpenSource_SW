@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.swproject.data.BaseballData;
 import com.example.swproject.data.Schedule;
 import com.example.swproject.data.SoccerData;
 
@@ -336,5 +337,281 @@ public class MyParser {
        result.GetTeamRight().SetTotalPass(Integer.parseInt(str.substring(str.indexOf("value-away") + "value-away".length() + 2, str.indexOf("<"))));
 
        return result;
+    }
+
+    public static BaseballData.Team[] ParseBaseballTeamRanking(String str){
+        BaseballData.Team[] result = new BaseballData.Team[10];
+
+        for(int i =0; i<10;i++){
+            result[i] = new BaseballData.Team();
+        }
+
+        for(int i =0; i<10; i++){
+            str = str.substring(str.indexOf("\"teamName\":\"") + "\"teamName\":\"".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"winDiff\":") + "\"winDiff\":".length());
+
+            result[i].SetWinDiff(str.substring(0, str.indexOf(",")));
+
+            str = str.substring(str.indexOf("\"gameCount\":") + "\"gameCount\":".length());
+
+            result[i].SetGame(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"wra\":") + "\"wra\":".length());
+
+            result[i].SetWinRate(str.substring(0, str.indexOf(",")));
+
+            str = str.substring(str.indexOf("\"teamCode\":\"") + "\"teamCode\":\"".length());
+
+            result[i].SetTeamCode(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"streak\":\"") + "\"streak\":\"".length());
+
+            result[i].SetStreak(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"bra\":") + "\"bra\":".length());
+
+            result[i].SetOnBasePercentage(str.substring(0, str.indexOf(",")));
+
+            str = str.substring(str.indexOf("\"lost\":") + "\"lost\":".length());
+
+            result[i].SetLost(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"won\":") + "\"won\":".length());
+
+            result[i].SetWon(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"rank\":") + "\"rank\":".length());
+
+            result[i].SetRank(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"lra\":") + "\"lra\":".length());
+
+            result[i].SetSluggingPercentage(str.substring(0, str.indexOf(",")));
+
+            str = str.substring(str.indexOf("\"recentResult\":\"") + "\"recentResult\":\"".length());
+
+            result[i].SetLastResult(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"drawn\":") + "\"drawn\":".length());
+
+            result[i].SetDrawn(Integer.parseInt(str.substring(0, str.indexOf("}"))));
+        }
+
+        return result;
+    }
+
+    public static BaseballData.Pitcher[] ParseBaseballPitcherRanking(String str){
+        BaseballData.Pitcher[] result = new BaseballData.Pitcher[20];
+
+        for(int i =0; i<20;i++){
+            result[i] = new BaseballData.Pitcher();
+        }
+
+        for(int i =0 ; i<20; i++){
+            str = str.substring(str.indexOf("\"pa_kk_rt\":\"") + "\"pa_kk_rt\":\"".length());
+
+            result[i].SetStrikeOutPerPlateAppearances(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"kk_bb_rt\":\"") + "\"kk_bb_rt\":\"".length());
+
+            result[i].SetStrikeOutPerBaseOnBalls(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"hp\":") + "\"hp\":".length());
+
+            result[i].SetDeadBall(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"hr\":") + "\"hr\":".length());
+
+            result[i].SetHomeRun(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"hold\":") + "\"hold\":".length());
+
+            result[i].SetHold(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"whip\":\"") + "\"whip\":\"".length());
+
+            result[i].SetWhip(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"hit\":") + "\"hit\":".length());
+
+            result[i].SetHit(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"innk\":\"") + "\"innk\":\"".length());
+
+            result[i].SetStrikeOutPerNineInnings(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"era\":\"") + "\"era\":\"".length());
+
+            result[i].SetEarnedRunAverage(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"rank\":") + "\"rank\":".length());
+
+            result[i].SetRank(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"kk\":") + "\"kk\":".length());
+
+            result[i].SetStrikeOut(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"sv\":") + "\"sv\":".length());
+
+            result[i].SetSave(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"winp\":\"") + "\"winp\":\"".length());
+
+            result[i].SetWinRate(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"inn\":\"") + "\"inn\":\"".length());
+
+            result[i].SetInnings(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"innb\":\"") + "\"innb\":\"".length());
+
+            result[i].SetBaseOnBallsPerNineInnings(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"war\":\"") + "\"war\":\"".length());
+
+            result[i].SetWar(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"wpa\":\"") + "\"wpa\":\"".length());
+
+            result[i].SetWpa(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"team\":\"") + "\"team\":\"".length());
+
+            result[i].SetTeam(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"l\":") + "\"l\":".length());
+
+            result[i].SetLost(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"game_count\":") + "\"game_count\":".length());
+
+            result[i].SetGame(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"r\":") + "\"r\":".length());
+
+            result[i].SetRuns(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"w\":") + "\"w\":".length());
+
+            result[i].SetWon(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"name\":\"") + "\"name\":\"".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"pa_bb_rt\":\"") + "\"pa_bb_rt\":\"".length());
+
+            result[i].SetBaseOnBallsPerPlateAppearances(str.substring(0, str.indexOf("\"")));
+        }
+
+        return result;
+    }
+
+    public static BaseballData.Batter[] ParseBaseballBatterRanking(String str){
+        BaseballData.Batter[] result = new BaseballData.Batter[20];
+
+        for(int i =0; i<20;i++){
+            result[i] = new BaseballData.Batter();
+        }
+
+        for(int i =0 ; i<20; i++){
+            str = str.substring(str.indexOf("\"wrc_plus\":\"") + "\"wrc_plus\":\"".length());
+
+            result[i].SetWrcPlus(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"hr\":") + "\"hr\":".length());
+
+            result[i].SetHomeRun(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"run\":") + "\"run\":".length());
+
+            result[i].SetRun(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"h2\":") + "\"h2\":".length());
+
+            result[i].SetHit2(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"h3\":") + "\"h3\":".length());
+
+            result[i].SetHit3(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"sb\":") + "\"sb\":".length());
+
+            result[i].SetStolenBase(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"hit\":") + "\"hit\":".length());
+
+            result[i].SetHit(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"hra\":\"") + "\"hra\":\"".length());
+
+            result[i].SetHitRate(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"rank\":") + "\"rank\":".length());
+
+            result[i].SetRank(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"kk\":") + "\"kk\":".length());
+
+            result[i].SetStrikeOut(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"woba\":\"") + "\"woba\":\"".length());
+
+            result[i].SetWoba(str.substring(0, str.indexOf(",")));
+
+            str = str.substring(str.indexOf("\"ab\":") + "\"ab\":".length());
+
+            result[i].SetAtBat(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"wpa\":\"") + "\"wpa\":\"".length());
+
+            result[i].SetWpa(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"war\":\"") + "\"war\":\"".length());
+
+            result[i].SetWar(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"team\":\"") + "\"team\":\"".length());
+
+            result[i].SetTeam(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"slg\":\"") + "\"slg\":\"".length());
+
+            result[i].SetSluggingPercentage(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"game_count\":") + "\"game_count\":".length());
+
+            result[i].SetGame(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"ops\":\"") + "\"ops\":\"".length());
+
+            result[i].SetOps(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"name\":\"") + "\"name\":\"".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"rbi\":") + "\"rbi\":".length());
+
+            result[i].SetRunBattedIn(Integer.parseInt(str.substring(0, str.indexOf(","))));
+
+            str = str.substring(str.indexOf("\"babip\":\"") + "\"babip\":\"".length());
+
+            result[i].SetBabip(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"isop\":\"") +  "\"isop\":\"".length());
+
+            result[i].SetIsop(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("\"obp\":\"") +"\"obp\":\"".length());
+
+            result[i].SetOnBasePercentage(str.substring(0, str.indexOf("\"")));
+        }
+
+        return result;
     }
 }
