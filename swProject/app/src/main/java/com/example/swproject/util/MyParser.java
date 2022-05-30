@@ -765,24 +765,38 @@ public class MyParser {
                 tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));
 
                 str = str.substring(str.indexOf("\"td_score\">") + "\"td_score\">".length());
+
+                if(str.indexOf("cancel") < 600 && str.contains("cancel"))
+                    tmp_schedule.SetIsCanceled(true);
+
                 if(str.indexOf("<") != 0){
                     tmp_schedule.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
 
                     str = str.substring(str.indexOf("</em>") + "</em>".length());
                     tmp_schedule.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                    str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
+                    tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
+
+                    str = str.substring(str.indexOf("\"td_stadium\"> ") + "\"td_stadium\"> ".length());
+                    if(str.indexOf("<") < 2){
+                        tmp_schedule.SetBroadcast("없음");
+                    }else{
+                        tmp_schedule.SetBroadcast(str.substring(0, str.indexOf("<") - 1));
+                    }
+
+                    str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
+                    tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
                 }else{
-                   if(str.indexOf("cancel") < 600 && str.indexOf("cancel") != -1)
+                   if(str.indexOf("cancel") < 600 && str.contains("cancel")) {
                        tmp_schedule.SetIsCanceled(true);
+
+                       str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
+                       tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
+                   }
                 }
 
-                str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
-                tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
 
-                str = str.substring(str.indexOf("\"td_stadium\"> ") + "\"td_stadium\"> ".length());
-                tmp_schedule.SetBroadcast(str.substring(0, str.indexOf("<") - 1));
-
-                str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
-                tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
 
                 LocalTime tmp_time = LocalTime.of(tmp_hour, tmp_min);
                 ZonedDateTime tmp_datetime = ZonedDateTime.of(tmp_date, tmp_time, ZoneId.of("Asia/Seoul"));
