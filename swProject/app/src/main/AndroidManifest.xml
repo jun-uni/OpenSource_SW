@@ -31,6 +31,13 @@
         <activity android:name=".ui.SoccerRankingActivity"/>
         <activity android:name=".ui.SoccerScheduleActivity"/>
         <activity android:name=".ui.SoccerStarActivity"/>
+        <receiver android:name=".Alarm.AlarmRecevier"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
