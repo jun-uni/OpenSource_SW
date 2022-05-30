@@ -17,13 +17,18 @@ public class baseballActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.baseball);
 
-        Button btnRb = (Button) findViewById(R.id.btnRankingB);
-        btnRb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), BaseballRankingActivity.class);
-                startActivity(intent);
-            }
+        Button btnRb = findViewById(R.id.btnRankingB);
+        btnRb.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), BaseballRankingActivity.class);
+            startActivity(intent);
         });
+
+        Button btnSb = findViewById(R.id.btnScheduleB);
+        btnSb.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), BaseballScheduleActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 }

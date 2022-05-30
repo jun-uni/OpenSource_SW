@@ -29,6 +29,7 @@
         <activity android:name=".ui.soccerActivity"/>
         <activity android:name=".ui.baseballActivity"/>
         <activity android:name=".ui.BaseballRankingActivity"/>
+        <activity android:name=".ui.BaseballScheduleActivity"/>
         <activity android:name=".ui.SoccerRankingActivity"/>
         <activity android:name=".ui.SoccerScheduleActivity"/>
         <activity android:name=".ui.SoccerStarActivity"/>
