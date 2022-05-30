@@ -8,6 +8,8 @@ import com.example.swproject.data.BaseballData;
 import com.example.swproject.data.Schedule;
 import com.example.swproject.data.SoccerData;
 
+import org.jsoup.Connection;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -610,6 +612,125 @@ public class MyParser {
             str = str.substring(str.indexOf("\"obp\":\"") +"\"obp\":\"".length());
 
             result[i].SetOnBasePercentage(str.substring(0, str.indexOf("\"")));
+        }
+
+        return result;
+    }
+
+    public static BaseballData.DetailedRanking[] ParseBaseballDetailedRanking(String str){
+        BaseballData.DetailedRanking[] result = new BaseballData.DetailedRanking[12];
+
+        for(int i =0; i< 12;i ++){
+            result[i] = new BaseballData.DetailedRanking();
+        }
+
+        str = str.substring(str.indexOf("pitcher") + "pitcher".length());
+
+        for(int i = 0; i < 4; i++){
+            str = str.substring(str.indexOf("\"title\">") + "\"title\">".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("<")));
+        }
+
+        for(int i =0; i< 4; i ++){
+            BaseballData.DetailedRanking.Player[] players = new BaseballData.DetailedRanking.Player[5];
+
+            for(int k = 0; k < 5; k++){
+                players[k] = new BaseballData.DetailedRanking.Player();
+            }
+
+            for(int j = 0; j < 5; j++){
+                str = str.substring(str.indexOf("\"ord\">") + "\"ord\">".length());
+
+                players[j].SetRank(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                str = str.substring(str.indexOf("<strong>") + "<strong>".length());
+
+                players[j].SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"team\">") + "\"team\">".length());
+
+                players[j].SetTeam(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("<em>") + "<em>".length());
+
+                players[j].SetRecord(str.substring(0, str.indexOf("<")));
+            }
+
+            result[i].SetPlayers(players);
+        }
+
+        str = str.substring(str.indexOf("hitter") + "hitter".length());
+
+        for(int i = 4; i < 8; i++){
+            str = str.substring(str.indexOf("\"title\">") + "\"title\">".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("<")));
+        }
+
+        for(int i =4; i< 8; i ++){
+            BaseballData.DetailedRanking.Player[] players = new BaseballData.DetailedRanking.Player[5];
+
+            for(int k = 0; k < 5; k++){
+                players[k] = new BaseballData.DetailedRanking.Player();
+            }
+
+            for(int j = 0; j < 5; j++){
+                str = str.substring(str.indexOf("\"ord\">") + "\"ord\">".length());
+
+                players[j].SetRank(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                str = str.substring(str.indexOf("<strong>") + "<strong>".length());
+
+                players[j].SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"team\">") + "\"team\">".length());
+
+                players[j].SetTeam(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("<em>") + "<em>".length());
+
+                players[j].SetRecord(str.substring(0, str.indexOf("<")));
+            }
+
+            result[i].SetPlayers(players);
+        }
+
+
+        str = str.substring(str.indexOf("etc") + "etc".length());
+
+        for(int i = 8; i < 12; i++){
+            str = str.substring(str.indexOf("\"title\">") + "\"title\">".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("<")));
+        }
+
+        for(int i =8; i< 12; i ++){
+            BaseballData.DetailedRanking.Player[] players = new BaseballData.DetailedRanking.Player[5];
+
+            for(int k = 0; k < 5; k++){
+                players[k] = new BaseballData.DetailedRanking.Player();
+            }
+
+            for(int j = 0; j < 5; j++){
+                str = str.substring(str.indexOf("\"ord\">") + "\"ord\">".length());
+
+                players[j].SetRank(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                str = str.substring(str.indexOf("<strong>") + "<strong>".length());
+
+                players[j].SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"team\">") + "\"team\">".length());
+
+                players[j].SetTeam(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("<em>") + "<em>".length());
+
+                players[j].SetRecord(str.substring(0, str.indexOf("<")));
+            }
+
+            result[i].SetPlayers(players);
         }
 
         return result;

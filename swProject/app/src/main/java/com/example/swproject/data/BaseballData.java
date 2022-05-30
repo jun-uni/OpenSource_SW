@@ -436,6 +436,58 @@ public class BaseballData {
         public String GetOnBasePercentage() { return this.on_base_percentage_; }
     }
 
+    public static class DetailedRanking{
+        /*
+        세부 부문 랭킹
+         */
+        private String name_;                       //부문 이름
+        private Player players_[];                  //선수들
+
+        public DetailedRanking(){
+            name_ = "";
+            players_ = new Player[5];
+        }
+
+        public static class Player{
+            private String name_;                   //선수 이름
+            private String team_;                   //팀
+            private int rank_;                      //순위
+            private String record_;                 //기록
+
+            public Player(){
+                name_ = "";
+                team_ = "";
+                rank_ = 0;
+                record_ = "";
+            }
+
+            public void SetName(String name) { this.name_ = name; }
+
+            public void SetTeam(String team) { this.team_ = team; }
+
+            public void SetRank(int rank) { this.rank_ = rank; }
+
+            public void SetRecord(String record) { this.record_ = record; }
+
+            public String GetName() { return this.name_; }
+
+            public String GetTeam() { return this.team_; }
+
+            public int GetRank() { return this.rank_; }
+
+            public String GetRecord() { return this.record_; }
+        }
+
+        public void SetName(String name) { this.name_ = name; }
+
+        public void SetPlayers(Player[] players) { this.players_ = players; }
+
+        public String GetName() { return this.name_; }
+
+        public Player[] GetPlayers() { return this.players_; }
+    }
+
+
     public static class LiveData{
         private SoccerData.LiveData.Team left_;
         private SoccerData.LiveData.Team right_;
@@ -446,8 +498,6 @@ public class BaseballData {
         }
 
         public static class Team{
-
-
             public Team(){
 
             }
