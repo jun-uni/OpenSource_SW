@@ -771,7 +771,8 @@ public class MyParser {
                     str = str.substring(str.indexOf("</em>") + "</em>".length());
                     tmp_schedule.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
                 }else{
-                    tmp_schedule.SetIsCanceled(true);
+                   if(str.indexOf("cancel") < 600 && str.indexOf("cancel") != -1)
+                       tmp_schedule.SetIsCanceled(true);
                 }
 
                 str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
