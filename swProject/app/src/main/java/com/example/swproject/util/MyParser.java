@@ -1,6 +1,7 @@
 package com.example.swproject.util;
 
 import android.os.Build;
+import android.os.health.SystemHealthManager;
 
 import androidx.annotation.RequiresApi;
 
@@ -747,6 +748,9 @@ public class MyParser {
 
             tmp_date = LocalDate.of(tmp_year, tmp_month, tmp_day);
 
+            if(tmp_day == 30)
+                System.out.println("잠시");
+
             while(str.contains("td_hour")){
                 str = str.substring(str.indexOf("\"td_hour\">") + "\"td_hour\">".length());
 
@@ -779,14 +783,13 @@ public class MyParser {
                     tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
 
                     str = str.substring(str.indexOf("\"td_stadium\"> ") + "\"td_stadium\"> ".length());
+
                     if(str.indexOf("<") < 2){
                         tmp_schedule.SetBroadcast("없음");
                     }else{
                         tmp_schedule.SetBroadcast(str.substring(0, str.indexOf("<") - 1));
                     }
 
-                    str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
-                    tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
                 }else{
                     str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
                     tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
@@ -794,9 +797,19 @@ public class MyParser {
                    if(str.indexOf("cancel") < 600 && str.contains("cancel")) {
                        tmp_schedule.SetIsCanceled(true);
 
-                       str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
-                       tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
+                       //str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
+                      // tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
                    }
+                }
+
+                if(str.indexOf("stadiumWeather") < 80 && str.contains("stadiumWeather")){
+                    str = str.substring(str.indexOf("id=\"stadiumWeather") + "id=\"stadiumWeather".length());
+                    tmp_schedule.SetStadium(str.substring(3, str.indexOf("<")));
+
+                    tmp_schedule.SetIsPlaying(true);
+                }else{
+                    str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
+                    tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
                 }
 
 
