@@ -16,6 +16,6 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-public class SoccerNewsActivity {
+public class SoccerNewsActivity extends soccerActivity {
 
 }
