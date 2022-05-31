@@ -788,6 +788,9 @@ public class MyParser {
                     str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
                     tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
                 }else{
+                    str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
+                    tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
+
                    if(str.indexOf("cancel") < 600 && str.contains("cancel")) {
                        tmp_schedule.SetIsCanceled(true);
 
