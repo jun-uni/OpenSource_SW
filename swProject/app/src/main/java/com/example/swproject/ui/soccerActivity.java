@@ -16,6 +16,15 @@ public class soccerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer);
 
+        Button btnNs = (Button) findViewById(R.id.btnNewsS);
+        btnNs.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SoccerNewsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button btnRs = (Button) findViewById(R.id.btnRankingS);
         btnRs.setOnClickListener(new View.OnClickListener(){
             @Override

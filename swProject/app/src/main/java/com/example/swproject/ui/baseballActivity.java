@@ -25,5 +25,14 @@ public class baseballActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btnNb = (Button) findViewById(R.id.btnNewsB);
+        btnNb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), BaseballNewsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
