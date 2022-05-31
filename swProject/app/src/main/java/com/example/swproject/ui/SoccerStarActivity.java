@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -58,6 +59,8 @@ public class SoccerStarActivity extends soccerActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_star);
 
+
+
         new GetLive().execute(schedule_url_);
 
         live_data_ = findViewById(R.id.text_live);
@@ -86,10 +89,19 @@ public class SoccerStarActivity extends soccerActivity{
         });
         /* 알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가*/
 
-
-
+        /* home 아이콘 눌렀을 때 메인화면 */
+        ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        /* home 아이콘 눌렀을 때 메인화면 */
 
     }
+
     /* 알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가*/
 
     private void setAlarm() {
@@ -116,6 +128,8 @@ public class SoccerStarActivity extends soccerActivity{
 
     }
     /* 알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가*/
+
+
 
 
     @SuppressLint("StaticFieldLeak")

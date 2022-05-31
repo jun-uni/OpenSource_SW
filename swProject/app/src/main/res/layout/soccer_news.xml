@@ -5,13 +5,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    /* 프레임 레이아웃을 위해 relativelayout설정, 상단 바 */
+    /* 프레임 레이아웃을 위해 relativelayout 설정, 상단 바 */
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:background="#1C6A1F">
+
+        <ImageButton
+            android:id="@+id/homeicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="center"
+            android:background="@drawable/ic_baseline_home_24" />
 
         <ImageView
             android:layout_width="45dp"

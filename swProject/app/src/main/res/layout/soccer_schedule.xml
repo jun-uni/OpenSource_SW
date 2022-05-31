@@ -12,11 +12,13 @@
         android:background="#1C6A1F"
         android:gravity="center_vertical">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
+        <ImageButton
+            android:id="@+id/homeicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
             android:scaleType="center"
-            android:src="@drawable/ic_baseline_home_24"/>
+            android:background="@drawable/ic_baseline_home_24" />
 
         <TextView
             android:layout_width="0dp"
@@ -25,6 +27,7 @@
             android:text="schedule"
             android:textSize="20dp"
             android:gravity="center"
+            android:layout_marginStart="-30dp"
             android:textColor="@android:color/white"/>
 
 

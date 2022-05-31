@@ -12,11 +12,7 @@
         android:orientation="horizontal"
         android:background="#1C6A1F"
         android:gravity="center_vertical">
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:scaleType="center"
-            android:src="@drawable/ic_baseline_home_24"/>
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,6 +20,7 @@
             android:text="Soccer Information"
             android:textSize="20dp"
             android:gravity="center"
+            android:layout_marginStart="0dp"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>

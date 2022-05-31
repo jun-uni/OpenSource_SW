@@ -12,6 +12,15 @@
         android:layout_alignParentTop="true"
         android:background="#1C6A1F">
 
+        <ImageButton
+            android:id="@+id/homeicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_baseline_home_24" />
+
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
