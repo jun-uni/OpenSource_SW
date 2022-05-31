@@ -1,22 +1,20 @@
-package com.example.swproject;
-
-/* 자바 파일 혹시 몰라 남겨둠 (fragment 6개 자바파일)
-* --> 필요 하지 않은 경우 모두 삭제 요망 */
+package com.example.swproject.fragment;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.swproject.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragment_player_baseball#newInstance} factory method to
+ * Use the {@link fragment_playerRecode_soccer#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_player_baseball extends Fragment {
+public class fragment_playerRecode_soccer extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +25,7 @@ public class fragment_player_baseball extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public fragment_player_baseball() {
+    public fragment_playerRecode_soccer() {
         // Required empty public constructor
     }
 
@@ -37,11 +35,11 @@ public class fragment_player_baseball extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_player_baseball.
+     * @return A new instance of fragment fragment_playerRecode_soccer.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_player_baseball newInstance(String param1, String param2) {
-        fragment_player_baseball fragment = new fragment_player_baseball();
+    public static fragment_playerRecode_soccer newInstance(String param1, String param2) {
+        fragment_playerRecode_soccer fragment = new fragment_playerRecode_soccer();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,6 +60,6 @@ public class fragment_player_baseball extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_baseball, container, false);
+        return inflater.inflate(R.layout.fragment_player_recode_soccer, container, false);
     }
 }
