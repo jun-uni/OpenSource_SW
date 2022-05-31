@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    /* linearLayout 상단 바 */
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#1C6A1F"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_home_24"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="like"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btnRefresh"
@@ -15,7 +43,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="0dp">
 
         <TextView
             android:id="@+id/text_live"
@@ -24,13 +52,13 @@
             android:textSize="15sp"
             android:textStyle="bold" />
 
-
     </ScrollView>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_marginTop="350dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp">
 
         <Button
             android:id="@+id/btnNoti"
@@ -42,4 +70,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+</LinearLayout>
