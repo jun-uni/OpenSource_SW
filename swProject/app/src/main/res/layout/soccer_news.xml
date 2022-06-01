@@ -2,10 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient">
 
-
-    /* 프레임 레이아웃을 위해 relativelayout 설정, 상단 바 */
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -18,8 +17,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:scaleType="center"
+            android:layout_marginTop="10dp"
             android:background="@drawable/ic_baseline_home_24" />
 
         <ImageView
@@ -30,20 +29,6 @@
             android:layout_centerVertical="true"/>
 
     </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="280dp">
-
-        <TextView
-            android:id="@+id/text_news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </ScrollView>
-
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -63,24 +48,6 @@
         app:itemTextColor="#ffffff"
         app:labelVisibilityMode="labeled" >
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="290dp">
-
-        <TextView
-            android:id="@+id/text_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0sp"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-    </ScrollView>
 
 
 </RelativeLayout>

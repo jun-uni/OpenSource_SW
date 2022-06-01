@@ -31,7 +31,7 @@ public class SoccerNewsActivity extends soccerActivity{
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -66,6 +66,5 @@ public class SoccerNewsActivity extends soccerActivity{
             }
         });
         /* fragment 화면 전환 */
-
     }
 }

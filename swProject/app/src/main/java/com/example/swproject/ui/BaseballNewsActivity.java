@@ -66,7 +66,5 @@ public class BaseballNewsActivity extends baseballActivity{
         });
         /* fragment 화면 전환 */
 
-
-
     }
 }
