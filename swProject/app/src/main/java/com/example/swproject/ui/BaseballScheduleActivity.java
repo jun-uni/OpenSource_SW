@@ -32,6 +32,7 @@ public class BaseballScheduleActivity extends baseballActivity{
     private String baseball_schedule_url_ = "https://sports.news.naver.com/kbaseball/schedule/index?";
     private String url_;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,7 @@ public class BaseballScheduleActivity extends baseballActivity{
 
 
     @SuppressLint("StaticFieldLeak")
-    private class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
+    public class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
         /*
         야구 일정 가져오기
          */

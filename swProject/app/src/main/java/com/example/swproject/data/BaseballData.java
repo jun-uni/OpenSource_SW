@@ -1,5 +1,7 @@
 package com.example.swproject.data;
 
+import java.util.ArrayList;
+
 public class BaseballData {
     /*
    야구 팀
@@ -489,28 +491,81 @@ public class BaseballData {
 
 
     public static class LiveData{
-        private SoccerData.LiveData.Team left_;
-        private SoccerData.LiveData.Team right_;
+        private BaseballData.LiveData.Team left_;
+        private BaseballData.LiveData.Team right_;
+        private ArrayList<String> sms_relay_;
+        private String inning_;
 
         public LiveData(){
-            left_ = new SoccerData.LiveData.Team();
-            right_ = new SoccerData.LiveData.Team();
+            left_ = new BaseballData.LiveData.Team();
+            right_ = new BaseballData.LiveData.Team();
+            sms_relay_ = new ArrayList<>();
+            inning_ = "";
         }
+
 
         public static class Team{
-            public Team(){
+            private int score_board_[];                 //1회~ 최대12회까지의 점수
+            private int run_;
+            private int hit_;
+            private int error_;
+            private int base_on_ball_;
+            private int score_;
+            private String name_;
 
+            public Team(){
+                score_board_ = new int[12];
+                run_ = 0;
+                hit_ = 0;
+                error_ = 0;
+                base_on_ball_ = 0;
+                score_ = 0;
+                name_ = "";
             }
 
+            public void SetScoreBoard(int []score_board) { this.score_board_ = score_board; }
 
+            public void SetRun(int run) { this.run_ = run; }
+
+            public void SetHit(int hit) { this.hit_ = hit; }
+
+            public void SetError(int error) { this.error_ = error; }
+
+            public void SetBaseOnBall(int base_on_ball) { this.base_on_ball_ = base_on_ball; }
+
+            public void SetName(String name) { this.name_ = name; }
+
+            public void SetScore(int score) { this.score_ = score; }
+
+            public int[] GetScoreBoard() { return this.score_board_; }
+
+            public int GetRun() { return this.run_; }
+
+            public int GetHit() { return this.hit_; }
+
+            public int GetError() { return this.error_; }
+
+            public int GetBaseOnBall() { return this.base_on_ball_; }
+
+            public String GetName() { return this.name_; }
+
+            public int GetScore() { return this.score_; }
         }
 
-        public void SetTeamLeft(SoccerData.LiveData.Team left) { this.left_ = left; }
+        public void SetTeamLeft(BaseballData.LiveData.Team left) { this.left_ = left; }
 
-        public void SetTeamRight(SoccerData.LiveData.Team right) { this.right_ = right; }
+        public void SetTeamRight(BaseballData.LiveData.Team right) { this.right_ = right; }
 
-        public SoccerData.LiveData.Team GetTeamLeft() { return this.left_; }
+        public void SetSMSRelay(ArrayList<String> sms_relay) { this.sms_relay_ = sms_relay; }
 
-        public SoccerData.LiveData.Team GetTeamRight() { return this.right_; }
+        public void SetInning(String inning) { this.inning_ = inning; }
+
+        public BaseballData.LiveData.Team GetTeamLeft() { return this.left_; }
+
+        public BaseballData.LiveData.Team GetTeamRight() { return this.right_; }
+
+        public ArrayList<String> GetSMSRelay() { return this.sms_relay_; }
+
+        public String GetInning() { return this.inning_; }
     }
 }

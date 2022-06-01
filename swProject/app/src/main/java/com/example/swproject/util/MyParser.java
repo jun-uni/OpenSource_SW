@@ -830,4 +830,146 @@ public class MyParser {
         return result;
 
     }
+
+    public static BaseballData.LiveData ParseBaseballLiveData(String str){
+        BaseballData.LiveData result = new BaseballData.LiveData();
+
+        str = str.substring(str.indexOf("\"score\">") + "\"score\">".length());
+        result.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+        str = str.substring(str.indexOf("\"score\">") + "\"score\">".length());
+        result.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+        str = str.substring(str.indexOf("\"scoreboard\"") + "\"scoreboard\"".length());
+        str = str.substring(str.indexOf("\"team\"") + "\"team\"".length());
+
+        int tmp_board[] = new int[12];
+
+        for(int i = 0; i < 12; i++)
+            tmp_board[i] = 0;
+
+        int index = 0;
+
+        str = str.substring(str.indexOf("team"));
+
+        while(str.indexOf("runs") >  str.indexOf("div class=\"\"") || str.indexOf("runs") > str.indexOf("div class=\"current\"")){
+            str = str.substring(str.indexOf("div"));
+            str = str.substring(str.indexOf("div class"));
+
+            if(str.indexOf("current") < 12 && str.contains("current")){
+                str = str.substring(str.indexOf("class=\"current\">") + "class=\"current\">".length());
+                tmp_board[index] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+                break;
+            }
+
+            if(str.indexOf("runs") < str.indexOf("class=\"\">"))
+                break;
+
+            str = str.substring(str.indexOf("class=\"\">") + "class=\"\">".length());
+            if(str.replace("\n","").replace(" ","").indexOf("<") == 0){
+                tmp_board[index++] = 0;
+            }
+            else{
+                tmp_board[index++] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+            }
+        }
+
+        result.GetTeamLeft().SetScoreBoard(tmp_board);
+
+        int tmp_board2[] = new int[12];
+
+        for(int i = 0; i < 12; i++)
+            tmp_board2[i] = 0;
+
+        index = 0;
+
+        str = str.substring(str.indexOf("\"runs\">") + "\"runs\">".length());
+        result.GetTeamLeft().SetRun(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamLeft().SetHit(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamLeft().SetError(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamLeft().SetBaseOnBall(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("team"));
+
+        while(str.indexOf("runs") >  str.indexOf("div class=\"\"") || str.indexOf("runs") > str.indexOf("div class=\"current\"")){
+
+            str = str.substring(str.indexOf("div"));
+            str = str.substring(str.indexOf("div class"));
+
+            if(str.indexOf("current") < 12 && str.contains("current")){
+                str = str.substring(str.indexOf("class=\"current\">") + "class=\"current\">".length());
+                tmp_board2[index] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+                break;
+            }
+
+            if(str.indexOf("runs") < str.indexOf("class=\"\">"))
+                break;
+
+            str = str.substring(str.indexOf("class=\"\">") + "class=\"\">".length());
+            if(str.replace("\n","").replace(" ","").indexOf("<") == 0){
+                tmp_board2[index++] = 0;
+            }
+            else{
+                tmp_board2[index++] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+            }
+        }
+
+        result.GetTeamRight().SetScoreBoard(tmp_board2);
+
+        str = str.substring(str.indexOf("\"runs\">") + "\"runs\">".length());
+        result.GetTeamRight().SetRun(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamRight().SetHit(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamRight().SetError(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamRight().SetBaseOnBall(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        if(str.contains("\"inning-container\">")){
+            str = str.substring(str.indexOf("\"inning-container\">") + "\"inning-container\">".length());
+            if(str.contains("top active")){
+                str = str.substring(str.indexOf("\"inning\">") + "\"inning\">".length());
+                String tmp_inning = str.substring(0, str.indexOf("<")).replace(" ","").replace("\n","");
+                result.SetInning(tmp_inning + "회초");
+            }else{
+                str = str.substring(str.indexOf("\"inning\">") + "\"inning\">".length());
+                String tmp_inning = str.substring(0, str.indexOf("<")).replace(" ","").replace("\n","");
+                result.SetInning(tmp_inning + "회말");
+            }
+        }
+
+        if(str.contains("records ui")){
+            str = str.substring(str.indexOf("records ui") + "records ui".length());
+        }
+
+        if(str.contains("weather")){
+            str = str.substring(str.indexOf("\"text-style-inning-start\"") + "\"text-style-inning-start\"".length(), str.indexOf("weather"));
+        }else if(str.contains("records ui")){
+            str = str.substring(str.indexOf("\"text-style-inning-start\"") + "\"text-style-inning-start\"".length(), str.indexOf("records ui"));
+        }
+
+
+        String tmp_str = str.substring(str.indexOf("1회초 ") + "1회초 ".length());
+        result.GetTeamLeft().SetName(tmp_str.substring(0, tmp_str.indexOf(" ")));
+
+        tmp_str = str.substring(str.indexOf("1회말 ") + "1회말 ".length());
+        result.GetTeamRight().SetName(tmp_str.substring(0, tmp_str.indexOf(" ")));
+
+        while(str.contains("title")){
+            str = str.substring(str.indexOf("title=\"") + "title=\"".length());
+            result.GetSMSRelay().add(str.substring(0, str.indexOf("\"")));
+        }
+
+        return result;
+
+    }
 }
