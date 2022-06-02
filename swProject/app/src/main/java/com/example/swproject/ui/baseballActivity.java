@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -39,5 +40,13 @@ public class baseballActivity extends AppCompatActivity {
         });
 
 
+        Button btnNb = (Button) findViewById(R.id.btnNewsB);
+        btnNb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), BaseballNewsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

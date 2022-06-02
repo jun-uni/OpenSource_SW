@@ -1,29 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="새로고침" />
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:layout_marginTop="50dp">
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#1C6A1F"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/homeicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="center"
+            android:background="@drawable/ic_baseline_home_24" />
 
         <TextView
-            android:id="@+id/text_baseball_live"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:text="like"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginStart="-30dp"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="새로고침" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:id="@+id/text_baseball_live"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
 
-    </ScrollView>
+        </ScrollView>
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="즐겨찾기 화면입니다."
+            android:textSize="25dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

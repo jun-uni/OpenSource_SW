@@ -1,59 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/gradient"
     tools:context=".ui.MainActivity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#1C6A1F"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="sport alarm services"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginStart="40dp"
+            android:textColor="@android:color/white"/>
+
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_add_alert_24"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="종목을 선택해주세요!"
-        android:layout_marginStart="70dp"
-        android:textSize="30dp"
-        android:layout_marginTop="50dp"
-        android:textColor="#ffffff"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="종목을 선택해주세요!"
+            android:layout_marginStart="50dp"
+            android:textSize="35dp"
+            android:layout_marginTop="48dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"/>
 
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="180dp"
-        android:padding="2dp"
-        android:src="@drawable/soccer" />
+    </LinearLayout>
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="180dp"
-        android:src="@drawable/baseball" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnSoccer"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:text="축구"
-        android:textSize="40dp"
-        android:background="#00ff0000"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="350dp"
-        android:textColor="#ffffff"/>
+        <Button
+            android:id="@+id/btnSoccer"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:text="축구"
+            android:textSize="35dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="80dp"
+            android:textColor="#ffffff"
+            android:backgroundTint="#1C6A1F"
+            android:drawableTop="@drawable/ic_baseline_sports_soccer_24"
+            android:background="@drawable/shape_button" />
 
-    <Button
-        android:id="@+id/btnBaseball"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:text="야구"
-        android:textSize="40dp"
-        android:background="#00ff0000"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="450dp"
-        android:textColor="#ffffff"/>
+        <Button
+            android:id="@+id/btnBaseball"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:text="야구"
+            android:textSize="35dp"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="40dp"
+            android:textColor="#ffffff"
+            android:backgroundTint="#1C6A1F"
+            android:drawableTop="@drawable/ic_baseline_sports_baseball_24"
+            android:background="@drawable/shape_button"/>
+
+    </LinearLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

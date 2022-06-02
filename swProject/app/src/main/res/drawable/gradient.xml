@@ -4,9 +4,9 @@
 
     <gradient
         android:angle="90"
-        android:centerColor="#025A9F"
-        android:endColor="#171F45"
-        android:startColor="#061B1E" />
+        android:centerColor="#2A2D32"
+        android:endColor="#2A2D32"
+        android:startColor="#2A2D32" />
 
     <!--    android:angle="0"-->
     <!-- angle 0 으로 맞추면 가로 90 은 세로-->
