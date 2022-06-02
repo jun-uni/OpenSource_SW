@@ -1033,4 +1033,26 @@ public class MyParser {
 
         return result;
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static ArrayList<News> ParseBaseballNews(String str){
+        ArrayList<News> result = new ArrayList<>();
+
+        for(int i =0; i< 10; i++){
+            News tmp_news = new News();
+
+            str = str.substring(str.indexOf("href=\"") + "href=\"".length());
+
+            tmp_news.SetTitle("https://www.naver.com" + str.substring(0, str.indexOf(" ")));
+
+            str = str.substring(str.indexOf(">") + ">".length());
+
+        }
+
+
+
+
+        return result;
+    }
 }

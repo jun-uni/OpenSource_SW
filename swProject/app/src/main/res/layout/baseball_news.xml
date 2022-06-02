@@ -35,6 +35,19 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/header"
         android:id="@+id/container">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="280dp">
+
+            <TextView
+                android:id="@+id/text_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </ScrollView>
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
