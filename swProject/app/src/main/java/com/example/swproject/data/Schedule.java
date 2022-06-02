@@ -30,7 +30,6 @@ public class Schedule {
     public static class Team{
         private String name_;       //팀 이름
         private int score_;         //점수
-        private int score__;         //점수
         Team(){
             name_ = "";
             score_ = 0;

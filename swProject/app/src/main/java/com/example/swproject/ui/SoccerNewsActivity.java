@@ -1,19 +1,35 @@
 package com.example.swproject.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.swproject.R;
+import com.example.swproject.data.BaseballData;
+import com.example.swproject.data.News;
 import com.example.swproject.fragment.fragment_playerRecode_soccer;
 import com.example.swproject.fragment.fragment_player_soccer;
 import com.example.swproject.fragment.fragment_team_soccer;
+import com.example.swproject.util.MyParser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class SoccerNewsActivity extends soccerActivity{
 
@@ -21,10 +37,18 @@ public class SoccerNewsActivity extends soccerActivity{
     fragment_player_soccer playerFragmentS;
     fragment_playerRecode_soccer playerRecodeFragmentS;
 
+    private TextView text_news_;
+
+    private final String news_url_ = "https://www.goal.com/kr/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%96%B4%EB%A6%AC%EA%B7%B8/2kwbbcootiqqgmrzs6o5inle5";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_news);
+
+        new GetNews().execute(news_url_);
+
+        text_news_ = findViewById(R.id.text_news);
 
         /* home 아이콘 눌렀을 때 메인화면 */
         ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
@@ -67,5 +91,44 @@ public class SoccerNewsActivity extends soccerActivity{
         });
         /* fragment 화면 전환 */
 
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private class GetNews extends AsyncTask<String, Void, ArrayList<News>> {
+        /*
+        뉴스 정보 가져오기
+         */
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        protected ArrayList<News> doInBackground(String... params){
+            try {
+                Document doc;
+
+                doc = Jsoup.connect(news_url_).get();
+                String str = doc.toString();
+                str = str.substring(str.indexOf("data-page=\"next\"") , str.indexOf("\"commercial\""));
+                return MyParser.ParseSoccerNews(str);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        protected void onPostExecute(ArrayList<News> data){
+            /*
+            데이터 표시 예시
+            디자인은 추후 변경 요망
+            데이터 종류와 관련 메소드는 News 클래스 참고
+             */
+
+            String str = "";
+
+            for(int i =0; i< data.size(); i++){
+                str += data.get(i).GetTitle() + " " + data.get(i).GetTime().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n" + data.get(i).GetUrl() + "\n\n";
+            }
+            text_news_.setText(str);
+            //더 많은 정보는 News 클래스 참고
+        }
     }
 }

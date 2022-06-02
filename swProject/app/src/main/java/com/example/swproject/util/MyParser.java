@@ -6,6 +6,7 @@ import android.os.health.SystemHealthManager;
 import androidx.annotation.RequiresApi;
 
 import com.example.swproject.data.BaseballData;
+import com.example.swproject.data.News;
 import com.example.swproject.data.Schedule;
 import com.example.swproject.data.SoccerData;
 
@@ -971,5 +972,65 @@ public class MyParser {
 
         return result;
 
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static ArrayList<News> ParseSoccerNews(String str){
+        ArrayList<News> result = new ArrayList<>();
+
+        while(str.contains("\"link\" href")){
+            News tmp_news = new News();
+
+            str = str.substring(str.indexOf("\"link\" href=\"") + "\"link\" href=\"".length());
+
+            String tmp_url = "https://www.goal.com" + str.substring(0, str.indexOf("\""));
+            tmp_news.SetUrl(tmp_url);
+
+            str = str.substring(str.indexOf("h3 title=\"") + "h3 title=\"".length());
+
+            tmp_news.SetTitle(str.substring(0, str.indexOf("\"")));
+
+            str = str.substring(str.indexOf("datetime=\"") + "datetime=\"".length());
+
+            int tmp_year, tmp_month, tmp_day, tmp_hour, tmp_min, tmp_sec;
+
+            tmp_year = Integer.parseInt(str.substring(0, str.indexOf("-")));
+
+            str = str.substring(str.indexOf("-") + 1);
+
+            tmp_month = Integer.parseInt(str.substring(0, str.indexOf("-")));
+
+            str = str.substring(str.indexOf("-") + 1);
+
+            tmp_day = Integer.parseInt(str.substring(0, str.indexOf("T")));
+
+            str = str.substring(str.indexOf("T") + 1);
+
+            tmp_hour = Integer.parseInt(str.substring(0, str.indexOf(":")));
+
+            str = str.substring(str.indexOf(":") + 1);
+
+            tmp_min = Integer.parseInt(str.substring(0,str.indexOf(":")));
+
+            str = str.substring(str.indexOf(":") + 1);
+
+            tmp_sec = Integer.parseInt(str.substring(0, str.indexOf("Z")));
+
+            LocalDate tmp_date = LocalDate.now();
+
+            tmp_date = LocalDate.of(tmp_year, tmp_month, tmp_day);
+
+            LocalTime tmp_time = LocalTime.of(tmp_hour, tmp_min, tmp_sec);
+
+            ZonedDateTime tmp_datetime = ZonedDateTime.of(tmp_date, tmp_time, ZoneId.of("Asia/Seoul"));
+
+            tmp_news.SetTime(tmp_datetime);
+
+            result.add(tmp_news);
+        }
+
+
+        return result;
     }
 }

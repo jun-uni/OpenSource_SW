@@ -1,6 +1,7 @@
 package com.example.swproject.ui;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.swproject.R;
 import com.example.swproject.fragment.fragment_player_baseball;
@@ -21,6 +23,8 @@ public class BaseballNewsActivity extends baseballActivity{
     fragment_player_baseball playerFragmentB;
     fragment_player_recode_baseball playerRecodeFragmentB;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
