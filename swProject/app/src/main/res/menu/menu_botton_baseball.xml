@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/baseballTeam"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/earth"
+        android:title="팀" />
+    <item
+        android:id="@+id/baseballPlayer"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/user"
+        android:title="선수"/>
+
+    <item
+        android:id="@+id/PlayerRecodeB"
+        app:showAsAction="always"
+        android:enabled="true"
+        android:icon="@drawable/trophy"
+        android:title="선수 기록"/>
+</menu>

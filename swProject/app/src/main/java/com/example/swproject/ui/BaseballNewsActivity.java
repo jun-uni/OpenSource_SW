@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.swproject.R;
-import com.example.swproject.fragment.fragment_playerRecode_soccer;
-import com.example.swproject.fragment.fragment_player_soccer;
-import com.example.swproject.fragment.fragment_team_soccer;
+import com.example.swproject.fragment.fragment_player_baseball;
+import com.example.swproject.fragment.fragment_player_recode_baseball;
+import com.example.swproject.fragment.fragment_team_baseball;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class SoccerNewsActivity extends soccerActivity{
+public class BaseballNewsActivity extends baseballActivity{
 
-    fragment_team_soccer teamFragmentS;
-    fragment_player_soccer playerFragmentS;
-    fragment_playerRecode_soccer playerRecodeFragmentS;
+    fragment_team_baseball teamFragmentB;
+    fragment_player_baseball playerFragmentB;
+    fragment_player_recode_baseball playerRecodeFragmentB;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.soccer_news);
+        setContentView(R.layout.baseball_news);
 
         /* home 아이콘 눌렀을 때 메인화면 */
         ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
@@ -37,35 +37,36 @@ public class SoccerNewsActivity extends soccerActivity{
         });
         /* home 아이콘 눌렀을 때 메인화면 */
 
-
         /* fragment 화면 전환 */
-        teamFragmentS = new fragment_team_soccer();
-        playerFragmentS = new fragment_player_soccer();
-        playerRecodeFragmentS = new fragment_playerRecode_soccer();
+        teamFragmentB = new fragment_team_baseball();
+        playerFragmentB = new fragment_player_baseball();
+        playerRecodeFragmentB = new fragment_player_recode_baseball();
 
         /* 초기 화면 */
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentS).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentB).commit();
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
-                    case R.id.soccerTeam:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentS).commit();
+                switch (item.getItemId()){
+                    case R.id.baseballTeam:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentB).commit();
                         return true;
-                    case R.id.soccerPlayer:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, playerFragmentS).commit();
+                    case R.id.baseballPlayer:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, playerFragmentB).commit();
                         return true;
-                    case R.id.PlayerRecodeS:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, playerRecodeFragmentS).commit();
+                    case R.id.PlayerRecodeB:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, playerRecodeFragmentB).commit();
                         return true;
                 }
                 return false;
             }
         });
         /* fragment 화면 전환 */
+
+
 
     }
 }
