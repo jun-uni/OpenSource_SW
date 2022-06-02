@@ -8,8 +8,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="여기는 축구 선수 기록 정보"
+        android:text="여기는 축구 선수기록 정보"
         android:textSize="60dp"
-        android:background="#D6F1B7"/>
+        android:background="#2A2D32"/>
 
 </FrameLayout>

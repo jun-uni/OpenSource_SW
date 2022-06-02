@@ -10,6 +10,6 @@
         android:layout_height="match_parent"
         android:text="여기는 축구선수 정보"
         android:textSize="60dp"
-        android:background="#D6F1B7"/>
+        android:background="#2A2D32"/>
 
 </FrameLayout>
