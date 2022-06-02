@@ -13,6 +13,7 @@ public class Schedule {
     private Team right_;
     private boolean isPlaying_;
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public Schedule(){
        date_ = ZonedDateTime.now();
@@ -24,7 +25,7 @@ public class Schedule {
     public static class Team{
         private String name_;       //팀 이름
         private int score_;         //점수
-        private int score__;         //점수
+
         Team(){
             name_ = "";
             score_ = 0;
@@ -49,9 +50,7 @@ public class Schedule {
         return this.date_.isBefore(ZonedDateTime.now());
     }
 
-    public void SetDate(ZonedDateTime date){
-        this.date_ = date;
-    }
+    public void SetDate(ZonedDateTime date){ this.date_ = date;}
 
     public void SetTeamLeft(Team team) { this.left_ = team; }
 

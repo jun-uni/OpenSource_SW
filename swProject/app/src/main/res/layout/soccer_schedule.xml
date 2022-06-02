@@ -12,6 +12,8 @@
         android:background="#1C6A1F"
         android:gravity="center_vertical">
 
+
+
         <ImageButton
             android:id="@+id/homeicon"
             android:layout_width="30dp"
@@ -33,36 +35,26 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="280dp">
-
-            <TextView
-                android:id="@+id/text_schedule"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-        </ScrollView>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="290dp">
+            android:layout_marginTop="0dp">
 
             <TextView
                 android:id="@+id/text_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="0sp"
                 android:textSize="15sp"
                 android:textStyle="bold" />

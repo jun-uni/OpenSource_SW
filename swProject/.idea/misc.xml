@@ -25,6 +25,8 @@
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_sports_baseball_24.xml" value="0.1" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_sports_soccer_24.xml" value="0.1" />
+        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.1" />
+        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/shape_button.xml" value="0.1" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/baseball.xml" value="0.1" />
@@ -35,6 +37,7 @@
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_player_baseball.xml" value="0.18177083333333333" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_player_recode_soccer.xml" value="0.1953125" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_player_soccer.xml" value="0.1953125" />
+        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_team_baseball.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_team_soccer.xml" value="0.15165876777251186" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer.xml" value="0.1" />
         <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer_news.xml" value="0.1" />
