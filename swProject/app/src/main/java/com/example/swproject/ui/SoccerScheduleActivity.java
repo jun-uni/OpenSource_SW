@@ -56,7 +56,7 @@ public class SoccerScheduleActivity extends soccerActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
+    public class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
         /*
         경기 일정 및 실시간 경기 정보
          */

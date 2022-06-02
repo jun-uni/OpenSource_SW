@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/gradient">
+    android:orientation="vertical">
+    
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,69 +12,72 @@
         android:background="#1C6A1F"
         android:gravity="center_vertical">
 
+        <ImageButton
+            android:id="@+id/homeicon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="center"
+            android:background="@drawable/ic_baseline_home_24" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Baseball Information"
+            android:text="schedule"
             android:textSize="20dp"
             android:gravity="center"
-            android:layout_marginStart="0dp"
+            android:layout_marginStart="-30dp"
             android:textColor="@android:color/white"/>
+
 
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_year"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:hint="년도를 입력하세요 예) 2022"/>
+
+        <EditText
+            android:id="@+id/edit_month"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:hint="월을 입력하세요 예) 5"/>
 
         <Button
-            android:id="@+id/btnNewsB"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="200dp"
-            android:textSize="20dp"
-            android:text="경기 소식"
-            android:textColor="#ffffff"
-            android:background="@drawable/shape_button" />
+            android:id="@+id/search"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="검색"
+            android:textSize="12sp"
+            android:onClick="mOnClickSearch"/>
 
-        <Button
-            android:id="@+id/btnRankingB"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="200dp"
-            android:textSize="20dp"
-            android:text="기록/순위"
-            android:textColor="#ffffff"
-            android:background="@drawable/shape_button"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnScheduleB"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="360dp"
-            android:textSize="20dp"
-            android:text="일정/결과"
-            android:textColor="#ffffff"
-            android:background="@drawable/shape_button"
-            />
+            <TextView
+                android:id="@+id/text_baseball_schedule"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/btnStarB"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="360dp"
-            android:textSize="20dp"
-            android:text="즐겨찾기"
-            android:textColor="#ffffff"
-            android:background="@drawable/shape_button" />
+        </ScrollView>
 
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일정/결과 화면입니다."
+            android:textSize="25dp"/>
 
+    </LinearLayout>
 
 </LinearLayout>

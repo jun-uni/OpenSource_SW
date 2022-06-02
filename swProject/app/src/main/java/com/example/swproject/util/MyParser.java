@@ -1,12 +1,15 @@
 package com.example.swproject.util;
 
 import android.os.Build;
+import android.os.health.SystemHealthManager;
 
 import androidx.annotation.RequiresApi;
 
 import com.example.swproject.data.BaseballData;
 import com.example.swproject.data.Schedule;
 import com.example.swproject.data.SoccerData;
+
+import org.jsoup.Connection;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -170,8 +173,6 @@ public class MyParser {
                 tmp_str = tmp_str.substring(0, tmp_str.indexOf(" "));
                 tmp_day = Integer.parseInt(tmp_str.replaceAll("[^0-9]",""));
                 tmp_date = LocalDate.of(tmp_year, tmp_month, tmp_day);
-
-                System.out.println(tmp_date);
             }
 
             Schedule tmp_schedule = new Schedule();
@@ -246,8 +247,6 @@ public class MyParser {
                 tmp_str = tmp_str.substring(0, tmp_str.indexOf(" "));
                 tmp_day = Integer.parseInt(tmp_str.replaceAll("[^0-9]",""));
                 tmp_date = LocalDate.of(tmp_year, tmp_month, tmp_day);
-
-                System.out.println(tmp_date);
             }
 
             Schedule tmp_schedule = new Schedule();
@@ -613,5 +612,364 @@ public class MyParser {
         }
 
         return result;
+    }
+
+    public static BaseballData.DetailedRanking[] ParseBaseballDetailedRanking(String str){
+        BaseballData.DetailedRanking[] result = new BaseballData.DetailedRanking[12];
+
+        for(int i =0; i< 12;i ++){
+            result[i] = new BaseballData.DetailedRanking();
+        }
+
+        str = str.substring(str.indexOf("pitcher") + "pitcher".length());
+
+        for(int i = 0; i < 4; i++){
+            str = str.substring(str.indexOf("\"title\">") + "\"title\">".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("<")));
+        }
+
+        for(int i =0; i< 4; i ++){
+            BaseballData.DetailedRanking.Player[] players = new BaseballData.DetailedRanking.Player[5];
+
+            for(int k = 0; k < 5; k++){
+                players[k] = new BaseballData.DetailedRanking.Player();
+            }
+
+            for(int j = 0; j < 5; j++){
+                str = str.substring(str.indexOf("\"ord\">") + "\"ord\">".length());
+
+                players[j].SetRank(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                str = str.substring(str.indexOf("<strong>") + "<strong>".length());
+
+                players[j].SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"team\">") + "\"team\">".length());
+
+                players[j].SetTeam(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("<em>") + "<em>".length());
+
+                players[j].SetRecord(str.substring(0, str.indexOf("<")));
+            }
+
+            result[i].SetPlayers(players);
+        }
+
+        str = str.substring(str.indexOf("hitter") + "hitter".length());
+
+        for(int i = 4; i < 8; i++){
+            str = str.substring(str.indexOf("\"title\">") + "\"title\">".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("<")));
+        }
+
+        for(int i =4; i< 8; i ++){
+            BaseballData.DetailedRanking.Player[] players = new BaseballData.DetailedRanking.Player[5];
+
+            for(int k = 0; k < 5; k++){
+                players[k] = new BaseballData.DetailedRanking.Player();
+            }
+
+            for(int j = 0; j < 5; j++){
+                str = str.substring(str.indexOf("\"ord\">") + "\"ord\">".length());
+
+                players[j].SetRank(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                str = str.substring(str.indexOf("<strong>") + "<strong>".length());
+
+                players[j].SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"team\">") + "\"team\">".length());
+
+                players[j].SetTeam(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("<em>") + "<em>".length());
+
+                players[j].SetRecord(str.substring(0, str.indexOf("<")));
+            }
+
+            result[i].SetPlayers(players);
+        }
+
+
+        str = str.substring(str.indexOf("etc") + "etc".length());
+
+        for(int i = 8; i < 12; i++){
+            str = str.substring(str.indexOf("\"title\">") + "\"title\">".length());
+
+            result[i].SetName(str.substring(0, str.indexOf("<")));
+        }
+
+        for(int i =8; i< 12; i ++){
+            BaseballData.DetailedRanking.Player[] players = new BaseballData.DetailedRanking.Player[5];
+
+            for(int k = 0; k < 5; k++){
+                players[k] = new BaseballData.DetailedRanking.Player();
+            }
+
+            for(int j = 0; j < 5; j++){
+                str = str.substring(str.indexOf("\"ord\">") + "\"ord\">".length());
+
+                players[j].SetRank(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                str = str.substring(str.indexOf("<strong>") + "<strong>".length());
+
+                players[j].SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"team\">") + "\"team\">".length());
+
+                players[j].SetTeam(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("<em>") + "<em>".length());
+
+                players[j].SetRecord(str.substring(0, str.indexOf("<")));
+            }
+
+            result[i].SetPlayers(players);
+        }
+
+        return result;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static List<Schedule> ParseBaseballSchedule(String str, int tmp_year){
+        List<Schedule> result = new ArrayList<>();
+
+        LocalDate tmp_date = LocalDate.now();
+        int tmp_day, tmp_month = 0, tmp_hour, tmp_min;
+
+        while(str.contains("td_date")){
+            str = str.substring(str.indexOf("\"td_date\"><strong>") + "\"td_date\"><strong>".length());
+
+            tmp_month = Integer.parseInt(str.substring(0, str.indexOf(".")));
+            tmp_day = Integer.parseInt(str.substring(str.indexOf(".") + 1, str.indexOf("<")));
+
+            tmp_date = LocalDate.of(tmp_year, tmp_month, tmp_day);
+
+            if(tmp_day == 30)
+                System.out.println("잠시");
+
+            while(str.contains("td_hour")){
+                str = str.substring(str.indexOf("\"td_hour\">") + "\"td_hour\">".length());
+
+                if(str.substring(0, str.indexOf("<")).length() == 1)
+                    break;
+
+                tmp_hour = Integer.parseInt(str.substring(0, str.indexOf(":")));
+                tmp_min = Integer.parseInt(str.substring(str.indexOf(":") + 1, str.indexOf("<")));
+
+                Schedule tmp_schedule = new Schedule();
+
+
+                //경기 진행 중 여부는 경기 진행 중일 때 구현예정 tmp_schedule.SetIsPlaying();
+
+                str = str.substring(str.indexOf("\"team_lft\">") + "\"team_lft\">".length());
+                tmp_schedule.GetTeamLeft().SetName(str.substring(0, str.indexOf("<")));
+
+                str = str.substring(str.indexOf("\"td_score\">") + "\"td_score\">".length());
+
+                if(str.indexOf("cancel") < 600 && str.contains("cancel"))
+                    tmp_schedule.SetIsCanceled(true);
+
+                if(str.indexOf("<") != 0){
+                    tmp_schedule.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                    str = str.substring(str.indexOf("</em>") + "</em>".length());
+                    tmp_schedule.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+                    str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
+                    tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
+
+                    str = str.substring(str.indexOf("\"td_stadium\"> ") + "\"td_stadium\"> ".length());
+
+                    if(str.indexOf("<") < 2){
+                        tmp_schedule.SetBroadcast("없음");
+                    }else{
+                        tmp_schedule.SetBroadcast(str.substring(0, str.indexOf("<") - 1));
+                    }
+
+                }else{
+                    str = str.substring(str.indexOf("\"team_rgt\">") + "\"team_rgt\">".length());
+                    tmp_schedule.GetTeamRight().SetName(str.substring(0, str.indexOf("<")));
+
+                   if(str.indexOf("cancel") < 600 && str.contains("cancel")) {
+                       tmp_schedule.SetIsCanceled(true);
+
+                       //str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
+                      // tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
+                   }
+                }
+
+                if(str.indexOf("stadiumWeather") < 80 && str.contains("stadiumWeather")){
+                    str = str.substring(str.indexOf("id=\"stadiumWeather") + "id=\"stadiumWeather".length());
+                    tmp_schedule.SetStadium(str.substring(3, str.indexOf("<")));
+
+                    tmp_schedule.SetIsPlaying(true);
+                }else{
+                    str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
+                    tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));
+                }
+
+
+
+                LocalTime tmp_time = LocalTime.of(tmp_hour, tmp_min);
+                ZonedDateTime tmp_datetime = ZonedDateTime.of(tmp_date, tmp_time, ZoneId.of("Asia/Seoul"));
+
+                tmp_schedule.SetDate(tmp_datetime);
+
+                result.add(tmp_schedule);
+
+                if(str.contains("td_date") && str.contains("td_hour")){
+                    if(str.indexOf("td_date") < str.indexOf("td_hour"))
+                        break;
+                }
+            }
+        }
+        return result;
+
+    }
+
+    public static BaseballData.LiveData ParseBaseballLiveData(String str){
+        BaseballData.LiveData result = new BaseballData.LiveData();
+
+        str = str.substring(str.indexOf("\"score\">") + "\"score\">".length());
+        result.GetTeamLeft().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+        str = str.substring(str.indexOf("\"score\">") + "\"score\">".length());
+        result.GetTeamRight().SetScore(Integer.parseInt(str.substring(0, str.indexOf("<"))));
+
+        str = str.substring(str.indexOf("\"scoreboard\"") + "\"scoreboard\"".length());
+        str = str.substring(str.indexOf("\"team\"") + "\"team\"".length());
+
+        int tmp_board[] = new int[12];
+
+        for(int i = 0; i < 12; i++)
+            tmp_board[i] = 0;
+
+        int index = 0;
+
+        str = str.substring(str.indexOf("team"));
+
+        while(str.indexOf("runs") >  str.indexOf("div class=\"\"") || str.indexOf("runs") > str.indexOf("div class=\"current\"")){
+            str = str.substring(str.indexOf("div"));
+            str = str.substring(str.indexOf("div class"));
+
+            if(str.indexOf("current") < 12 && str.contains("current")){
+                str = str.substring(str.indexOf("class=\"current\">") + "class=\"current\">".length());
+                tmp_board[index] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+                break;
+            }
+
+            if(str.indexOf("runs") < str.indexOf("class=\"\">"))
+                break;
+
+            str = str.substring(str.indexOf("class=\"\">") + "class=\"\">".length());
+            if(str.replace("\n","").replace(" ","").indexOf("<") == 0){
+                tmp_board[index++] = 0;
+            }
+            else{
+                tmp_board[index++] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+            }
+        }
+
+        result.GetTeamLeft().SetScoreBoard(tmp_board);
+
+        int tmp_board2[] = new int[12];
+
+        for(int i = 0; i < 12; i++)
+            tmp_board2[i] = 0;
+
+        index = 0;
+
+        str = str.substring(str.indexOf("\"runs\">") + "\"runs\">".length());
+        result.GetTeamLeft().SetRun(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamLeft().SetHit(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamLeft().SetError(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamLeft().SetBaseOnBall(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("team"));
+
+        while(str.indexOf("runs") >  str.indexOf("div class=\"\"") || str.indexOf("runs") > str.indexOf("div class=\"current\"")){
+
+            str = str.substring(str.indexOf("div"));
+            str = str.substring(str.indexOf("div class"));
+
+            if(str.indexOf("current") < 12 && str.contains("current")){
+                str = str.substring(str.indexOf("class=\"current\">") + "class=\"current\">".length());
+                tmp_board2[index] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+                break;
+            }
+
+            if(str.indexOf("runs") < str.indexOf("class=\"\">"))
+                break;
+
+            str = str.substring(str.indexOf("class=\"\">") + "class=\"\">".length());
+            if(str.replace("\n","").replace(" ","").indexOf("<") == 0){
+                tmp_board2[index++] = 0;
+            }
+            else{
+                tmp_board2[index++] = Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", ""));
+            }
+        }
+
+        result.GetTeamRight().SetScoreBoard(tmp_board2);
+
+        str = str.substring(str.indexOf("\"runs\">") + "\"runs\">".length());
+        result.GetTeamRight().SetRun(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamRight().SetHit(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamRight().SetError(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        str = str.substring(str.indexOf("<div>") + "<div>".length());
+        result.GetTeamRight().SetBaseOnBall(Integer.parseInt(str.substring(0, str.indexOf("<")).replace(" ","").replace("\n", "")));
+
+        if(str.contains("\"inning-container\">")){
+            str = str.substring(str.indexOf("\"inning-container\">") + "\"inning-container\">".length());
+            if(str.contains("top active")){
+                str = str.substring(str.indexOf("\"inning\">") + "\"inning\">".length());
+                String tmp_inning = str.substring(0, str.indexOf("<")).replace(" ","").replace("\n","");
+                result.SetInning(tmp_inning + "회초");
+            }else{
+                str = str.substring(str.indexOf("\"inning\">") + "\"inning\">".length());
+                String tmp_inning = str.substring(0, str.indexOf("<")).replace(" ","").replace("\n","");
+                result.SetInning(tmp_inning + "회말");
+            }
+        }
+
+        if(str.contains("records ui")){
+            str = str.substring(str.indexOf("records ui") + "records ui".length());
+        }
+
+        if(str.contains("weather")){
+            str = str.substring(str.indexOf("\"text-style-inning-start\"") + "\"text-style-inning-start\"".length(), str.indexOf("weather"));
+        }else if(str.contains("records ui")){
+            str = str.substring(str.indexOf("\"text-style-inning-start\"") + "\"text-style-inning-start\"".length(), str.indexOf("records ui"));
+        }
+
+
+        String tmp_str = str.substring(str.indexOf("1회초 ") + "1회초 ".length());
+        result.GetTeamLeft().SetName(tmp_str.substring(0, tmp_str.indexOf(" ")));
+
+        tmp_str = str.substring(str.indexOf("1회말 ") + "1회말 ".length());
+        result.GetTeamRight().SetName(tmp_str.substring(0, tmp_str.indexOf(" ")));
+
+        while(str.contains("title")){
+            str = str.substring(str.indexOf("title=\"") + "title=\"".length());
+            result.GetSMSRelay().add(str.substring(0, str.indexOf("\"")));
+        }
+
+        return result;
+
     }
 }

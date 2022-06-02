@@ -40,4 +40,28 @@
         android:textSize="15sp"
         android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/text_baseball_pitcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="79dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/text_baseball_batter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="148dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/text_baseball_detailed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="264dp"
+        android:text="TextView" />
 </LinearLayout>
+

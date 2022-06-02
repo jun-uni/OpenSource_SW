@@ -17,32 +17,13 @@
         <entry key="..\:/Users/USER/Desktop/OpenSourceSW/swProject/app/src/main/res/layout/soccer_star.xml" value="0.15896739130434784" />
         <entry key="..\:/Users/USER/Desktop/OpenSourceSW/swProject/app/src/main/res/layout/soccer_start.xml" value="0.2713541666666667" />
         <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/activity_main.xml" value="0.14108409321175278" />
-        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/baseball.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/baseball_ranking.xml" value="0.15670289855072464" />
-        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/soccer.xml" value="0.15670289855072464" />
+        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/baseball.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/baseball_ranking.xml" value="0.33" />
+        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/baseball_schedule.xml" value="0.26358695652173914" />
+        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/baseball_star.xml" value="0.15715579710144928" />
+        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/soccer.xml" value="0.25" />
         <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/soccer_news.xml" value="0.15670289855072464" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/gradient.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_sports_baseball_24.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/ic_baseline_sports_soccer_24.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/drawable/shape_button.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/baseball.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/baseball_news.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/baseball_ranking.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/baseball_schedule.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/baseball_star.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_player_baseball.xml" value="0.18177083333333333" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_player_recode_soccer.xml" value="0.1953125" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_player_soccer.xml" value="0.1953125" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/fragment_team_soccer.xml" value="0.15165876777251186" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer_news.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer_ranking.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer_schedule.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/layout/soccer_star.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/menu/menu_bottom.xml" value="0.1" />
-        <entry key="..\:/Users/rlagk/swProject/app/src/main/res/menu/menu_botton_baseball.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Desktop/OpenSource_SW/swProject/app/src/main/res/layout/soccer_star.xml" value="0.15715579710144928" />
       </map>
     </option>
   </component>
