@@ -1044,14 +1044,30 @@ public class MyParser {
 
             str = str.substring(str.indexOf("href=\"") + "href=\"".length());
 
-            tmp_news.SetTitle("https://www.naver.com" + str.substring(0, str.indexOf(" ")));
+            tmp_news.SetUrl("https://sports.news.naver.com" + str.substring(0, str.indexOf("\"")).replace("amp;", ""));
 
             str = str.substring(str.indexOf(">") + ">".length());
 
+            tmp_news.SetTitle(str.substring(0, str.indexOf("</a>")).replace("amp;" ,""));
+
+            result.add(tmp_news);
         }
 
+        str = str.substring(str.indexOf("home_news_list"));
 
+        while(str.contains("href")){
+            News tmp_news = new News();
 
+            str = str.substring(str.indexOf("href=\"") + "href=\"".length());
+
+            tmp_news.SetUrl("https://sports.news.naver.com" + str.substring(0, str.indexOf("\"")).replace("amp;", ""));
+
+            str = str.substring(str.indexOf("title=\"") + "title=\"".length());
+
+            tmp_news.SetTitle(str.substring(0, str.indexOf("\">")).replace("amp;" ,""));
+
+            result.add(tmp_news);
+        }
 
         return result;
     }

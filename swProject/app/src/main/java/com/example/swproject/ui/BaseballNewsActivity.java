@@ -121,12 +121,13 @@ public class BaseballNewsActivity extends baseballActivity{
             데이터 표시 예시
             디자인은 추후 변경 요망
             데이터 종류와 관련 메소드는 News 클래스 참고
+            야구 뉴스는 기사 작성 시간 파악 불가능
              */
 
             String str = "";
 
             for(int i =0; i< data.size(); i++){
-                str += data.get(i).GetTitle() + " " + data.get(i).GetTime().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n" + data.get(i).GetUrl() + "\n\n";
+                str += data.get(i).GetTitle() + "\n" + data.get(i).GetUrl() + "\n\n";
             }
             text_news_.setText(str);
             //더 많은 정보는 News 클래스 참고
