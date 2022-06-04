@@ -36,6 +36,7 @@
         <activity android:name=".ui.SoccerRankingActivity"/>
         <activity android:name=".ui.SoccerScheduleActivity"/>
         <activity android:name=".ui.SoccerStarActivity"/>
+        <activity android:name=".ui.SettingActivity"/>
         <receiver android:name=".Alarm.AlarmRecevier"
             android:enabled="true"
             android:exported="false">

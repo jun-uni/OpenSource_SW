@@ -1,6 +1,11 @@
 package com.example.swproject.ui;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -15,7 +20,6 @@ import androidx.annotation.RequiresApi;
 
 import com.example.swproject.R;
 import com.example.swproject.data.BaseballData;
-import com.example.swproject.data.SoccerData;
 import com.example.swproject.util.MyParser;
 
 import org.jsoup.Jsoup;
@@ -33,13 +37,38 @@ public class BaseballStarActivity extends baseballActivity{
     private LocalDate now = LocalDate.now();
     private int year_;
 
-    private final String url_ = "https://mykbostats.com/schedule/6-LG-Twins"; //임의로 LG로 정함
-    private String team_code_;
+    private String url_ = "https://mykbostats.com/schedule/";
     private String playing_url_ = "https://mykbostats.com";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_star);
+
+        SharedPreferences prefs;
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String team_name = prefs.getString("baseball_team", "");
+
+        if(team_name.compareTo("두산") == 0){
+            url_ += "1-Doosan-Bears";
+        }else if(team_name.compareTo("한화") ==0){
+            url_ += "4-Hanwha-Eagles";
+        }else if(team_name.compareTo("삼성") ==0){
+            url_ += "3-Samsung-Lions";
+        }else if(team_name.compareTo("NC") ==0){
+            url_ += "9-NC-Dinos";
+        }else if(team_name.compareTo("KIA") == 0){
+            url_ += "5-Kia-Tigers";
+        }else if(team_name.compareTo("LG") ==0){
+            url_ += "6-LG-Twins";
+        }else if(team_name.compareTo("SSG") == 0){
+            url_ += "24-SSG-Landers";
+        }else if(team_name.compareTo("롯데") == 0){
+            url_ += "2-Lotte-Giants";
+        }else if(team_name.compareTo("키움") == 0){
+            url_ += "23-Kiwoom-Heroes";
+        }else if(team_name.compareTo("KT") ==0){
+            url_ += "22-KT-Wiz";
+        }
 
         /* home 아이콘 눌렀을 때 메인화면 */
         ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
@@ -62,6 +91,7 @@ public class BaseballStarActivity extends baseballActivity{
         /*
         실시간 경기 정보
          */
+
         @RequiresApi(api = Build.VERSION_CODES.O)
         protected Void doInBackground(String... params){
             try {
@@ -85,6 +115,7 @@ public class BaseballStarActivity extends baseballActivity{
 
                         is_playing_ = true;
                         str = str.substring(str.indexOf("href=\"") + "href=\"".length());
+                        playing_url_ = "https://mykbostats.com";
                         playing_url_ += str.substring(0, str.indexOf("\""));
                         break;
                     }
