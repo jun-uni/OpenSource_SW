@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -29,8 +30,11 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 public class SoccerNewsActivity extends soccerActivity{
+
+    TextView linkNews;
 
     fragment_news_s newsFragmentS;
     fragment_team_soccer teamFragmentS;
@@ -45,6 +49,8 @@ public class SoccerNewsActivity extends soccerActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_news);
+
+        linkNews = (TextView)findViewById(R.id.text_news);
 
         new GetNews().execute(news_url_);
 
@@ -126,7 +132,18 @@ public class SoccerNewsActivity extends soccerActivity{
             데이터 종류와 관련 메소드는 News 클래스 참고
              */
 
+            Linkify.TransformFilter transformFilter = new Linkify.TransformFilter() {
+                @Override
+                public String transformUrl(Matcher match, String url) {
+                    return null;
+                }
+            };
+
+            Linkify.addLinks()
+
             String str = "";
+
+
 
             for(int i =0; i< data.size(); i++){
                 str += data.get(i).GetTitle() + " " + data.get(i).GetTime().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n" + data.get(i).GetUrl() + "\n\n";
