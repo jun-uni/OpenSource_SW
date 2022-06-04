@@ -6,7 +6,13 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -63,12 +69,21 @@ public class BaseballStarActivity extends baseballActivity{
         }else if(team_name.compareTo("KT") ==0){
             url_ += "22-KT-Wiz";
         }
-       new GetLive().execute(url_);
+
+        /* home 아이콘 눌렀을 때 메인화면 */
+        ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        /* home 아이콘 눌렀을 때 메인화면 */
+
+        new GetLive().execute(url_);
 
         live_data_ = findViewById(R.id.text_live);
-
-        Button btnRefresh = findViewById(R.id.btnRefresh);
-        btnRefresh.setOnClickListener(view -> new BaseballStarActivity.GetLive().execute(url_));
     }
 
     @SuppressLint("StaticFieldLeak")

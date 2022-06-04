@@ -15,9 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.example.swproject.R;
-import com.example.swproject.data.BaseballData;
 import com.example.swproject.data.News;
-import com.example.swproject.fragment.fragment_playerRecode_soccer;
+import com.example.swproject.fragment.fragment_news_s;
+import com.example.swproject.fragment.fragment_player_recode_soccer;
 import com.example.swproject.fragment.fragment_player_soccer;
 import com.example.swproject.fragment.fragment_team_soccer;
 import com.example.swproject.util.MyParser;
@@ -25,7 +25,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
@@ -33,9 +32,10 @@ import java.util.ArrayList;
 
 public class SoccerNewsActivity extends soccerActivity{
 
+    fragment_news_s newsFragmentS;
     fragment_team_soccer teamFragmentS;
     fragment_player_soccer playerFragmentS;
-    fragment_playerRecode_soccer playerRecodeFragmentS;
+    fragment_player_recode_soccer playerRecodeFragmentS;
 
     private TextView text_news_;
 
@@ -63,12 +63,13 @@ public class SoccerNewsActivity extends soccerActivity{
 
 
         /* fragment 화면 전환 */
+        newsFragmentS = new fragment_news_s();
         teamFragmentS = new fragment_team_soccer();
         playerFragmentS = new fragment_player_soccer();
-        playerRecodeFragmentS = new fragment_playerRecode_soccer();
+        playerRecodeFragmentS = new fragment_player_recode_soccer();
 
         /* 초기 화면 */
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentS).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, newsFragmentS).commit();
 
         BottomNavigationView bottom_menu = findViewById(R.id.bottom_menu);
         bottom_menu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -76,6 +77,9 @@ public class SoccerNewsActivity extends soccerActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()) {
+                    case R.id.soccrNew:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, newsFragmentS).commit();
+                        return true;
                     case R.id.soccerTeam:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentS).commit();
                         return true;

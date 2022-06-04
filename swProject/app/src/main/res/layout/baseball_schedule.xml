@@ -39,44 +39,55 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_year"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:hint="년도를 입력하세요 예) 2022"/>
 
-        <EditText
-            android:id="@+id/edit_month"
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:hint="월을 입력하세요 예) 5"/>
-
-        <Button
-            android:id="@+id/search"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:text="검색"
-            android:textSize="12sp"
-            android:onClick="mOnClickSearch"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/text_baseball_schedule"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-
-        </ScrollView>
-
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="일정/결과 화면입니다."
-            android:textSize="25dp"/>
+            android:orientation="horizontal">
+
+            /* 수정 전 검색 버튼 */
+            <Button
+                android:id="@+id/leftbtn"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="이전"
+                android:textSize="12sp"
+                android:onClick="mOnClickLftbtn"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="경기 결과"
+                android:textSize="25dp"/>
+
+            <Button
+                android:id="@+id/rigntbtn"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="다음"
+                android:textSize="12sp"
+                android:onClick="mOnClickRrtbtn"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/text_baseball_schedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+            </ScrollView>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

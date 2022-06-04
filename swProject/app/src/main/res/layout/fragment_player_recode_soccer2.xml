@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.fragment_team_baseball">
+    tools:context=".fragment.fragment_player_recode_soccer">
 
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="여기는 야구팀 정보"
-        android:textSize="60dp"
-        android:background="#2A2D32"/>
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

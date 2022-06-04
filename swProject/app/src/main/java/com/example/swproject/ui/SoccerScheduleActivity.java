@@ -48,7 +48,6 @@ public class SoccerScheduleActivity extends soccerActivity {
         });
         /* home 아이콘 눌렀을 때 메인화면 */
 
-        schedule_ = findViewById(R.id.text_schedule);
         result_ = findViewById(R.id.text_result);
         //new GetSchedule().execute(schedule_url_); //일정이 끝나서 오류
         new GetResult().execute(result_url_);
@@ -129,7 +128,7 @@ public class SoccerScheduleActivity extends soccerActivity {
                     str.append("[진행중] ");
                 }
 
-                str.append(i.GetTeamLeft().GetName()).append(" : ").append(i.GetTeamRight().GetName()).append(" [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]\n");
+                str.append(i.GetTeamLeft().GetName()).append(" : ").append(i.GetTeamRight().GetName()).append(" [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]\n\n");
             }
 
             result_.setText(str.toString());
