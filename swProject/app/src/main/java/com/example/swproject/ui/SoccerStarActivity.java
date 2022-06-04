@@ -50,11 +50,11 @@ public class SoccerStarActivity extends soccerActivity{
 
 
 
+
     private TextView live_data_;
     private boolean is_playing_ = false;
-    
-    /*임시로 첼시로 정함*/
-    private final String schedule_url_ = "https://www.goal.com/kr/%ED%8C%80/%EC%B2%BC%EC%8B%9C/%EC%9D%BC%EC%A0%95-%EA%B2%B0%EA%B3%BC/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%96%B4%EB%A6%AC%EA%B7%B8/2kwbbcootiqqgmrzs6o5inle5/9q0arba2kbnywth8bkxlhgmdr";
+
+    private String schedule_url_ = "https://www.goal.com/";
     private String playing_url_ = "";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,9 +62,50 @@ public class SoccerStarActivity extends soccerActivity{
         setContentView(R.layout.soccer_star);
 
         SharedPreferences prefs;
-
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         String team_name = prefs.getString("soccer_team", "");
+
+        if(team_name.compareTo("노리치 시티") == 0){
+            url_ += "1-Doosan-Bears";
+        }else if(team_name.compareTo("뉴캐슬 유나이티드") ==0){
+            url_ += "4-Hanwha-Eagles";
+        }else if(team_name.compareTo("레스터 시티") ==0){
+            url_ += "3-Samsung-Lions";
+        }else if(team_name.compareTo("리버풀") ==0){
+            url_ += "9-NC-Dinos";
+        }else if(team_name.compareTo("리즈 유나이티드") == 0){
+            url_ += "5-Kia-Tigers";
+        }else if(team_name.compareTo("맨체스터 시티") ==0){
+            url_ += "6-LG-Twins";
+        }else if(team_name.compareTo("맨체스터 유나이티드") == 0){
+            url_ += "24-SSG-Landers";
+        }else if(team_name.compareTo("번리") == 0){
+            url_ += "2-Lotte-Giants";
+        }else if(team_name.compareTo("브라이튼 앤 호브") == 0){
+            url_ += "23-Kiwoom-Heroes";
+        }else if(team_name.compareTo("브렌트포드") ==0){
+            url_ += "22-KT-Wiz";
+        }else if(team_name.compareTo("사우샘프턴") ==0){
+            url_ += "9-NC-Dinos";
+        }else if(team_name.compareTo("아스널") == 0){
+            url_ += "5-Kia-Tigers";
+        }else if(team_name.compareTo("아스톤 빌라") ==0){
+            url_ += "6-LG-Twins";
+        }else if(team_name.compareTo("에버튼") == 0){
+            url_ += "24-SSG-Landers";
+        }else if(team_name.compareTo("왓퍼드") == 0){
+            url_ += "2-Lotte-Giants";
+        }else if(team_name.compareTo("울버햄튼 원더러스") == 0){
+            url_ += "23-Kiwoom-Heroes";
+        }else if(team_name.compareTo("웨스트햄 유나이티드") ==0){
+            url_ += "22-KT-Wiz";
+        }else if(team_name.compareTo("첼시") == 0){
+
+        }else if(team_name.compareTo("크리스털 팰리스") ==0){
+
+        }else if(team_name.compareTo("토트넘 홋스퍼") ==0){
+            
+        }
 
         new GetLive().execute(schedule_url_);
 
