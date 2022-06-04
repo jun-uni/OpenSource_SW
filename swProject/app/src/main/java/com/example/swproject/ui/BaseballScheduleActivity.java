@@ -29,10 +29,9 @@ import java.util.List;
 public class BaseballScheduleActivity extends baseballActivity{
 
     private TextView schedule_;
-    private EditText year_;
-    private EditText month_;
     private String baseball_schedule_url_ = "https://sports.news.naver.com/kbaseball/schedule/index?";
     private String url_;
+    int year_, month_;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -40,6 +39,10 @@ public class BaseballScheduleActivity extends baseballActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.baseball_schedule);
 
+        year_ = 2022;
+        month_ = 6;
+
+        new GetSchedule().execute(String.valueOf(year_));
         /* home 아이콘 눌렀을 때 메인화면 */
         ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -54,13 +57,30 @@ public class BaseballScheduleActivity extends baseballActivity{
         schedule_ = findViewById(R.id.text_baseball_schedule);
     }
 
-    public void mOnClickSearch(View v){
-        url_ = baseball_schedule_url_ + "month=" + month_.getText().toString() + "&year=" + year_.getText().toString();
+    public void mOnClickLftbtn(View v){
+        if(month_ == 3){
+            month_ = 11;
+            year_--;
+        }else{
+            month_--;
+        }
+        url_ = baseball_schedule_url_ + "month=" + String.valueOf(month_) + "&year=" + String.valueOf(year_);
 
-        new GetSchedule().execute(year_.getText().toString());
-        //지금은 입력식으로 되어있는데 예외방지를 위해 좌우 버튼으로 1달씩 이동할 수 있는 기능 구현해야됨
+        new GetSchedule().execute(String.valueOf(year_));
     }
 
+    public void mOnClickRrtbtn(View v){
+        if(month_ == 11){
+            month_ = 3;
+            year_++;
+        }else{
+            month_++;
+        }
+
+        url_ = baseball_schedule_url_ + "month=" + String.valueOf(month_) + "&year=" + String.valueOf(year_);
+
+        new GetSchedule().execute(String.valueOf(year_));
+    }
 
     @SuppressLint("StaticFieldLeak")
     public class GetSchedule extends AsyncTask<String, Void, List<Schedule>> {
@@ -71,10 +91,12 @@ public class BaseballScheduleActivity extends baseballActivity{
         protected List<Schedule> doInBackground(String... params){
             try {
                 Document doc;
+                url_ = baseball_schedule_url_ + "month=" + String.valueOf(month_) + "&year=" + String.valueOf(year_);
+
 
                 doc = Jsoup.connect(url_).get();
                 Elements data = doc.select("#calendarWrap");
-                return MyParser.ParseBaseballSchedule(data.toString(), Integer.parseInt(year_.getText().toString()));
+                return MyParser.ParseBaseballSchedule(data.toString(), Integer.parseInt(String.valueOf(year_)));
             } catch (IOException e) {
                 e.printStackTrace();
             }

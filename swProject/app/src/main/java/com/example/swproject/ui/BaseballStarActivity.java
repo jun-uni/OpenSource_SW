@@ -55,9 +55,6 @@ public class BaseballStarActivity extends baseballActivity{
         new GetLive().execute(url_);
 
         live_data_ = findViewById(R.id.text_live);
-
-        Button btnRefresh = findViewById(R.id.btnRefresh);
-        btnRefresh.setOnClickListener(view -> new BaseballStarActivity.GetLive().execute(url_));
     }
 
     @SuppressLint("StaticFieldLeak")
