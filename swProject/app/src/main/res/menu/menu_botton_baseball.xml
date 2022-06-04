@@ -14,7 +14,7 @@
         android:id="@+id/baseballTeam"
         app:showAsAction="always"
         android:enabled="true"
-        android:icon="@drawable/earth"
+        android:icon="@drawable/team"
         android:title="팀" />
     <item
         android:id="@+id/baseballPlayer"
