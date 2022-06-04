@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +51,7 @@ public class SoccerStarActivity extends soccerActivity{
 
     private TextView live_data_;
     private boolean is_playing_ = false;
-
+    
     /*임시로 첼시로 정함*/
     private final String schedule_url_ = "https://www.goal.com/kr/%ED%8C%80/%EC%B2%BC%EC%8B%9C/%EC%9D%BC%EC%A0%95-%EA%B2%B0%EA%B3%BC/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%96%B4%EB%A6%AC%EA%B7%B8/2kwbbcootiqqgmrzs6o5inle5/9q0arba2kbnywth8bkxlhgmdr";
     private String playing_url_ = "";

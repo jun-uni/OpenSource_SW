@@ -12,7 +12,6 @@ import androidx.annotation.RequiresApi;
 
 import com.example.swproject.R;
 import com.example.swproject.data.BaseballData;
-import com.example.swproject.data.SoccerData;
 import com.example.swproject.util.MyParser;
 
 import org.jsoup.Jsoup;

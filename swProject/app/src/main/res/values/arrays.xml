@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="soccer_team">
+        <item>노리치 시티</item>
+        <item>뉴캐슬 유나이티드</item>
+        <item>레스터 시티</item>
+        <item>리버풀</item>
+        <item>리즈 유나이티드</item>
+        <item>맨체스터 시티</item>
+        <item>맨체스터 유나이티드</item>
+        <item>번리</item>
+        <item>브라이튼 앤 호브</item>
+        <item>브렌트포드</item>
+        <item>사우샘프턴</item>
+        <item>아스널</item>
+        <item>아스톤 빌라</item>
+        <item>에버튼</item>
+        <item>왓퍼드</item>
+        <item>울버햄튼 원더러스</item>
+        <item>웨스트햄 유나이티드</item>
+        <item>첼시</item>
+        <item>크리스털 팰리스</item>
+        <item>토트넘 홋스퍼</item>
+    </string-array>
+
+    <string-array name="baseball_team">
+        <item>NC</item>
+        <item>KIA</item>
+        <item>KT</item>
+        <item>LG</item>
+        <item>SSG</item>
+        <item>두산</item>
+        <item>롯데</item>
+        <item>삼성</item>
+        <item>키움</item>
+        <item>한화</item>
+    </string-array>
+</resources>
