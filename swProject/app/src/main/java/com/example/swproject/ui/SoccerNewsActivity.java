@@ -52,8 +52,6 @@ public class SoccerNewsActivity extends soccerActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_news);
 
-        linkNews = (TextView)findViewById(R.id.text_news);
-
         new GetNews().execute(news_url_);
 
         text_news_ = findViewById(R.id.text_news);
@@ -134,8 +132,13 @@ public class SoccerNewsActivity extends soccerActivity{
             데이터 종류와 관련 메소드는 News 클래스 참고
              */
 
-
             String str = "";
+
+            for(int i=0; i<data.size(); i++){
+                str += data.get(i).GetTime().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n" + data.get(i).GetTitle()+"\n\n";
+            }
+
+            linkNews = (TextView)findViewById(R.id.text_news);
             linkNews.setText(str);
 
             Linkify.TransformFilter transformFilter = new Linkify.TransformFilter() {
@@ -145,14 +148,10 @@ public class SoccerNewsActivity extends soccerActivity{
                 }
             };
 
-
-            for(int i=0; i<data.size(); i++){
-                str += data.get(i).GetTitle()+"\n\n";
-                Pattern pattern1 = Pattern.compile(data.get(i).GetTitle());
-                Linkify.addLinks(linkNews, pattern1,data.get(i).GetUrl());
+            for(int k=0; k<data.size(); k++){
+                Pattern pattern = Pattern.compile(data.get(k).GetTitle());
+                Linkify.addLinks(linkNews, pattern, data.get(k).GetUrl(), null, transformFilter);
             }
-            linkNews.setText(str);
-
 
             /*
             for(int i =0; i< data.size(); i++){
@@ -160,7 +159,9 @@ public class SoccerNewsActivity extends soccerActivity{
             }
             text_news_.setText(str);
             //더 많은 정보는 News 클래스 참고
-            */
+
+             */
+
 
         }
     }

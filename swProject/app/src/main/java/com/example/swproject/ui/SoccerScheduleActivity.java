@@ -123,13 +123,11 @@ public class SoccerScheduleActivity extends soccerActivity {
 
             StringBuilder str = new StringBuilder();
             for(Schedule i : data){
-                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("\n");
+                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("----------------------------------------------------").append("\n");
                 if(i.GetIsPlaying()){
                     str.append("[진행중] ");
                 }
-
-                str.append(i.GetTeamLeft().GetName()).append(" : ").append(i.GetTeamRight().GetName()).append(" [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]\n\n");
-            }
+                str.append(i.GetTeamLeft().GetName()).append("  [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]  ").append(i.GetTeamRight().GetName()).append("\n\n");            }
 
             result_.setText(str.toString());
         }

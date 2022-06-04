@@ -35,7 +35,6 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -43,6 +42,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             /* 수정 전 검색 버튼 */
@@ -57,13 +58,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="경기 결과"
+                android:layout_marginStart="10dp"
+                android:text="경기 일정"
                 android:textSize="25dp"/>
 
             <Button
                 android:id="@+id/rigntbtn"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
                 android:text="다음"
                 android:textSize="12sp"
                 android:onClick="mOnClickRrtbtn"/>
@@ -76,7 +79,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="9dp">
 
                 <TextView
                     android:id="@+id/text_baseball_schedule"

@@ -114,7 +114,7 @@ public class BaseballScheduleActivity extends baseballActivity{
 
             StringBuilder str = new StringBuilder();
             for(Schedule i : data){
-                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("\n");
+                str.append("  ---------------").append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("---------------").append("\n");
                 if(i.GetIsPlaying()){
                     str.append("[진행중] ");
                 }
@@ -122,7 +122,7 @@ public class BaseballScheduleActivity extends baseballActivity{
                     str.append("[해당 경기는 현지 사정으로 취소]" );
                 }
 
-                str.append(i.GetTeamLeft().GetName()).append(" : ").append(i.GetTeamRight().GetName()).append(" [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]\n");
+                str.append("                                        ").append(i.GetTeamLeft().GetName()).append("  [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]  ").append(i.GetTeamRight().GetName()).append("\n\n");
             }
 
             schedule_.setText(str.toString());
