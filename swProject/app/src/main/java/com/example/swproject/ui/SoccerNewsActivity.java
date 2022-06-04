@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.service.autofill.ImageTransformation;
 import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,7 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SoccerNewsActivity extends soccerActivity{
 
@@ -132,24 +134,34 @@ public class SoccerNewsActivity extends soccerActivity{
             데이터 종류와 관련 메소드는 News 클래스 참고
              */
 
+
+            String str = "";
+            linkNews.setText(str);
+
             Linkify.TransformFilter transformFilter = new Linkify.TransformFilter() {
                 @Override
                 public String transformUrl(Matcher match, String url) {
-                    return null;
+                    return "";
                 }
             };
 
-            Linkify.addLinks()
 
-            String str = "";
+            for(int i=0; i<data.size(); i++){
+                str += data.get(i).GetTitle()+"\n\n";
+                Pattern pattern1 = Pattern.compile(data.get(i).GetTitle());
+                Linkify.addLinks(linkNews, pattern1,data.get(i).GetUrl());
+            }
+            linkNews.setText(str);
 
 
-
+            /*
             for(int i =0; i< data.size(); i++){
                 str += data.get(i).GetTitle() + " " + data.get(i).GetTime().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z")) + "\n" + data.get(i).GetUrl() + "\n\n";
             }
             text_news_.setText(str);
             //더 많은 정보는 News 클래스 참고
+            */
+
         }
     }
 }
