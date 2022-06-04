@@ -1,10 +1,13 @@
 package com.example.swproject.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 
@@ -22,6 +25,7 @@ public class fragment_preference extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.setting);
+
 
         soccer_team_ = (ListPreference)findPreference("soccer_team");
         baseball_team_ = (ListPreference)findPreference("baseball_team");
