@@ -1,9 +1,11 @@
 package com.example.swproject.ui;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -36,6 +38,10 @@ public class BaseballStarActivity extends baseballActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_star);
+
+        SharedPreferences prefs;
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String team_name = prefs.getString("baseball_team", "");
 
         new GetLive().execute(url_);
 

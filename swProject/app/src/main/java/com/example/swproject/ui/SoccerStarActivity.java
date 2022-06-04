@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -60,7 +61,10 @@ public class SoccerStarActivity extends soccerActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_star);
 
+        SharedPreferences prefs;
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String team_name = prefs.getString("soccer_team", "");
 
         new GetLive().execute(schedule_url_);
 

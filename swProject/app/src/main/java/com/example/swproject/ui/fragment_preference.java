@@ -1,4 +1,4 @@
-package com.example.swproject.fragment;
+package com.example.swproject.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import com.example.swproject.R;
 
 public class fragment_preference extends PreferenceFragment {
-
+//패키지 옮기면 에러 발생 *패키지 옮기지 말것*
     SharedPreferences prefs;
 
     ListPreference soccer_team_;

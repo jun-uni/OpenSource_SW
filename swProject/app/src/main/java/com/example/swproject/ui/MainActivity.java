@@ -6,10 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.example.swproject.R;
-import com.example.swproject.fragment.fragment_preference;
 
 public class MainActivity extends AppCompatActivity {
 
