@@ -1,11 +1,13 @@
 package com.example.swproject.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -38,9 +40,18 @@ public class BaseballScheduleActivity extends baseballActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.baseball_schedule);
 
+        /* home 아이콘 눌렀을 때 메인화면 */
+        ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        /* home 아이콘 눌렀을 때 메인화면 */
+
         schedule_ = findViewById(R.id.text_baseball_schedule);
-        month_ = findViewById(R.id.edit_month);
-        year_ = findViewById(R.id.edit_year);
     }
 
     public void mOnClickSearch(View v){
