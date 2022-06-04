@@ -49,7 +49,7 @@ public class SoccerScheduleActivity extends soccerActivity {
         /* home 아이콘 눌렀을 때 메인화면 */
 
         result_ = findViewById(R.id.text_result);
-       //new GetSchedule().execute(schedule_url_); //일정이 끝나서 오류
+        //new GetSchedule().execute(schedule_url_); //일정이 끝나서 오류
         new GetResult().execute(result_url_);
 
     }
@@ -120,6 +120,7 @@ public class SoccerScheduleActivity extends soccerActivity {
             디자인은 추후 변경 요망
             데이터 종류와 관련 메소드는 SoccerSchedule 클래스 참고
              */
+
             StringBuilder str = new StringBuilder();
             for(Schedule i : data){
                 str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("\n");

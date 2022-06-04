@@ -6,10 +6,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -48,25 +50,69 @@ public class SoccerStarActivity extends soccerActivity{
 
 
 
+
     private TextView live_data_;
     private boolean is_playing_ = false;
 
-    /*임시로 첼시로 정함*/
-    private final String schedule_url_ = "https://www.goal.com/kr/%ED%8C%80/%EC%B2%BC%EC%8B%9C/%EC%9D%BC%EC%A0%95-%EA%B2%B0%EA%B3%BC/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%96%B4%EB%A6%AC%EA%B7%B8/2kwbbcootiqqgmrzs6o5inle5/9q0arba2kbnywth8bkxlhgmdr";
+    private String url_ = "https://www.goal.com/kr/";
     private String playing_url_ = "";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soccer_star);
 
+        SharedPreferences prefs;
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String team_name = prefs.getString("soccer_team", "");
 
+        if(team_name.compareTo("노리치 시티") == 0){
+            url_ += "팀/노리치-시티/일정-결과/suz80crpy3anixyzccmu6jzp";
+        }else if(team_name.compareTo("뉴캐슬 유나이티드") ==0){
+            url_ += "팀/뉴캐슬-유나이티드/일정-결과/7vn2i2kd35zuetw6b38gw9jsz";
+        }else if(team_name.compareTo("레스터 시티") ==0){
+            url_ += "팀/레스터-시티/일정-결과/avxknfz4f6ob0rv9dbnxdzde0";
+        }else if(team_name.compareTo("리버풀") ==0){
+            url_ += "팀/리버풀/일정-결과/c8h9bw1l82s06h77xxrelzhur";
+        }else if(team_name.compareTo("리즈 유나이티드") == 0){
+            url_ += "팀/리즈-유나이티드/일정-결과/48gk2hpqtsl6p9sx9kjhaydq4";
+        }else if(team_name.compareTo("맨체스터 시티") ==0){
+            url_ += "팀/맨체스터-시티/일정-결과/a3nyxabgsqlnqfkeg41m6tnpp";
+        }else if(team_name.compareTo("맨체스터 유나이티드") == 0){
+            url_ += "팀/맨체스터-유나이티드/일정-결과/6eqit8ye8aomdsrrq0hk3v7gh";
+        }else if(team_name.compareTo("번리") == 0){
+            url_ += "팀/번리/일정-결과/64bxxwu2mv2qqlv0monbkj1om";
+        }else if(team_name.compareTo("브라이튼 앤 호브") == 0){
+            url_ += "팀/브라이튼-앤-호브/일정-결과/e5p0ehyguld7egzhiedpdnc3w";
+        }else if(team_name.compareTo("브렌트포드") ==0){
+            url_ += "팀/브렌트포드/일정-결과/7yx5dqhhphyvfisohikodajhv";
+        }else if(team_name.compareTo("사우샘프턴") ==0){
+            url_ += "팀/사우샘프턴/일정-결과/d5ydtvt96bv7fq04yqm2w2632";
+        }else if(team_name.compareTo("아스널") == 0){
+            url_ += "팀/아스널/일정-결과/4dsgumo7d4zupm2ugsvm4zm4d";
+        }else if(team_name.compareTo("아스톤 빌라") ==0){
+            url_ += "팀/아스톤-빌라/일정-결과/b496gs285it6bheuikox6z9mj";
+        }else if(team_name.compareTo("에버튼") == 0){
+            url_ += "팀/에버튼/일정-결과/ehd2iemqmschhj2ec0vayztzz";
+        }else if(team_name.compareTo("왓퍼드") == 0){
+            url_ += "팀/왓퍼드/일정-결과/4t83rqbdbekinxl5fz2ygsyta";
+        }else if(team_name.compareTo("울버햄튼 원더러스") == 0){
+            url_ += "팀/울버햄튼-원더러스/일정-결과/b9si1jn1lfxfund69e9ogcu2n";
+        }else if(team_name.compareTo("웨스트햄 유나이티드") ==0){
+            url_ += "팀/웨스트햄-유나이티드/일정-결과/4txjdaqveermfryvbfrr4taf7";
+        }else if(team_name.compareTo("첼시") == 0){
+            url_ += "팀/첼시/일정-결과/9q0arba2kbnywth8bkxlhgmdr";
+        }else if(team_name.compareTo("크리스털 팰리스") ==0){
+            url_ += "팀/크리스털-팰리스/일정-결과/1c8m2ko0wxq1asfkuykurdr0y";
+        }else if(team_name.compareTo("토트넘 홋스퍼") ==0){
+            url_ += "팀/토트넘-홋스퍼/일정-결과/22doj4sgsocqpxw45h607udje";
+        }
 
-        new GetLive().execute(schedule_url_);
+        new GetLive().execute(url_);
 
         live_data_ = findViewById(R.id.text_live);
 
         Button btnRefresh = findViewById(R.id.btnRefresh);
-        btnRefresh.setOnClickListener(view -> new GetLive().execute(schedule_url_));
+        btnRefresh.setOnClickListener(view -> new GetLive().execute(url_));
 
         /* 알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가알람 기능 추가*/
 
@@ -142,7 +188,7 @@ public class SoccerStarActivity extends soccerActivity{
             try {
                 Document doc;
 
-                doc = Jsoup.connect(schedule_url_).get();
+                doc = Jsoup.connect(url_).get();
                 Elements data = doc.select("div.widget-entity-matches__list");
                 String str = data.toString();
 

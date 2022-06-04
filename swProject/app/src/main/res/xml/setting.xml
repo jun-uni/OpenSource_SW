@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="soccer_team"
+        android:title="축구 팀 즐겨찾기"
+        android:summary="즐겨찾는 축구 팀을 설정합니다."
+        android:entries="@array/soccer_team"
+        android:entryValues="@array/soccer_team"/>
+
+    <ListPreference
+        android:key="baseball_team"
+        android:title="야구 팀 즐겨찾기"
+        android:summary="즐겨찾는 야구 팀을 설정합니다."
+        android:entries="@array/baseball_team"
+        android:entryValues="@array/baseball_team"/>
+</PreferenceScreen>

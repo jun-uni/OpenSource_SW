@@ -52,8 +52,7 @@
                 android:layout_height="match_parent"
                 android:text="이전"
                 android:textSize="12sp"
-                android:onClick="mOnClickSearch"/>
-            /* 수정 전 검색 버튼 */
+                android:onClick="mOnClickLftbtn"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +66,7 @@
                 android:layout_height="match_parent"
                 android:text="다음"
                 android:textSize="12sp"
-                android:onClick="mOnClickSearch"/>
+                android:onClick="mOnClickRrtbtn"/>
 
         </LinearLayout>
 
