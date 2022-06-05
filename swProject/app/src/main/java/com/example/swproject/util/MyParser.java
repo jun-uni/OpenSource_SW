@@ -995,7 +995,7 @@ public class MyParser {
 
             str = str.substring(str.indexOf("h3 title=\"") + "h3 title=\"".length());
 
-            tmp_news.SetTitle(str.substring(0, str.indexOf("\"")));
+            tmp_news.SetTitle(str.substring(0, str.indexOf("\"")).replace("amp;" ,"").replace("&quot;", "\""));
 
             str = str.substring(str.indexOf("datetime=\"") + "datetime=\"".length());
 
@@ -1050,11 +1050,11 @@ public class MyParser {
 
             str = str.substring(str.indexOf("href=\"") + "href=\"".length());
 
-            tmp_news.SetUrl("https://sports.news.naver.com" + str.substring(0, str.indexOf("\"")).replace("amp;", ""));
+            tmp_news.SetUrl("https://sports.news.naver.com" + str.substring(0, str.indexOf("\"")).replace("amp;", "").replace("&quot;", "\""));
 
             str = str.substring(str.indexOf(">") + ">".length());
 
-            tmp_news.SetTitle(str.substring(0, str.indexOf("</a>")).replace("amp;" ,""));
+            tmp_news.SetTitle(str.substring(0, str.indexOf("</a>")).replace("amp;" ,"").replace("&quot;", "\""));
 
             result.add(tmp_news);
         }
@@ -1066,11 +1066,11 @@ public class MyParser {
 
             str = str.substring(str.indexOf("href=\"") + "href=\"".length());
 
-            tmp_news.SetUrl("https://sports.news.naver.com" + str.substring(0, str.indexOf("\"")).replace("amp;", ""));
+            tmp_news.SetUrl("https://sports.news.naver.com" + str.substring(0, str.indexOf("\"")).replace("amp;", "").replace("&quot;", "\""));
 
             str = str.substring(str.indexOf("title=\"") + "title=\"".length());
 
-            tmp_news.SetTitle(str.substring(0, str.indexOf("\">")).replace("amp;" ,""));
+            tmp_news.SetTitle(str.substring(0, str.indexOf("\">")).replace("amp;" ,"").replace("&quot;", "\""));
 
             result.add(tmp_news);
         }
