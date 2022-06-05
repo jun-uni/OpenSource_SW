@@ -33,30 +33,19 @@
             android:id="@+id/btnNewsB"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="180dp"
             android:textSize="20dp"
             android:text="경기 소식"
             android:textColor="#ffffff"
             android:background="@drawable/shape_button" />
 
         <Button
-            android:id="@+id/btnRankingB"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="230dp"
-            android:layout_marginTop="200dp"
-            android:textSize="20dp"
-            android:text="기록/순위"
-            android:textColor="#ffffff"
-            android:background="@drawable/shape_button"/>
-
-        <Button
             android:id="@+id/btnScheduleB"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="340dp"
             android:textSize="20dp"
             android:text="일정/결과"
             android:textColor="#ffffff"
@@ -68,7 +57,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginStart="230dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="340dp"
             android:textSize="20dp"
             android:text="즐겨찾기"
             android:textColor="#ffffff"
