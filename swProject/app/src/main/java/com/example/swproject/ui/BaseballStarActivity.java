@@ -181,7 +181,7 @@ public class BaseballStarActivity extends baseballActivity{
                     while(str.contains("inning")){
                         tmp = str.substring(str.indexOf("\"inning\">") + "\"inning\">".length()).replace(" ", "").replace("\n","");
                         tmp = tmp.substring(0, tmp.indexOf("<"));
-                        if(tmp.compareTo("Final") == 0){
+                        if(tmp.contains("Final")){
                             str = str.substring(str.indexOf("inning\">") + "\"inning\">".length());
 
                             continue;
