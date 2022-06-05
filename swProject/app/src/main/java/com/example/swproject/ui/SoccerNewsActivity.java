@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.service.autofill.ImageTransformation;
 import android.text.util.Linkify;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.example.swproject.R;
 import com.example.swproject.data.News;
 import com.example.swproject.fragment.fragment_news_s;
 import com.example.swproject.fragment.fragment_player_recode_soccer;
-import com.example.swproject.fragment.fragment_player_soccer;
 import com.example.swproject.fragment.fragment_team_soccer;
 import com.example.swproject.util.MyParser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,7 +38,6 @@ public class SoccerNewsActivity extends soccerActivity{
 
     fragment_news_s newsFragmentS;
     fragment_team_soccer teamFragmentS;
-    fragment_player_soccer playerFragmentS;
     fragment_player_recode_soccer playerRecodeFragmentS;
 
     private TextView text_news_;
@@ -73,7 +70,6 @@ public class SoccerNewsActivity extends soccerActivity{
         /* fragment 화면 전환 */
         newsFragmentS = new fragment_news_s();
         teamFragmentS = new fragment_team_soccer();
-        playerFragmentS = new fragment_player_soccer();
         playerRecodeFragmentS = new fragment_player_recode_soccer();
 
         /* 초기 화면 */
@@ -90,9 +86,6 @@ public class SoccerNewsActivity extends soccerActivity{
                         return true;
                     case R.id.soccerTeam:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentS).commit();
-                        return true;
-                    case R.id.soccerPlayer:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, playerFragmentS).commit();
                         return true;
                     case R.id.PlayerRecodeS:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, playerRecodeFragmentS).commit();

@@ -21,12 +21,6 @@ public class baseballActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.baseball);
 
-        Button btnRb = findViewById(R.id.btnRankingB);
-        btnRb.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), BaseballRankingActivity.class);
-            startActivity(intent);
-        });
-
         Button btnSb = findViewById(R.id.btnScheduleB);
         btnSb.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), BaseballScheduleActivity.class);

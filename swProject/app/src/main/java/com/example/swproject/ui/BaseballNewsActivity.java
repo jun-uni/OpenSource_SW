@@ -17,7 +17,6 @@ import androidx.annotation.RequiresApi;
 import com.example.swproject.R;
 import com.example.swproject.data.News;
 import com.example.swproject.fragment.fragment_news_b;
-import com.example.swproject.fragment.fragment_player_baseball;
 import com.example.swproject.fragment.fragment_player_recode_baseball;
 import com.example.swproject.fragment.fragment_team_baseball;
 import com.example.swproject.util.MyParser;
@@ -27,14 +26,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class BaseballNewsActivity extends baseballActivity{
 
     fragment_news_b newsFragmentB;
     fragment_team_baseball teamFragmentB;
-    fragment_player_baseball playerFragmentB;
     fragment_player_recode_baseball playerRecodeFragmentB;
 
     private TextView text_news_;
@@ -65,7 +62,6 @@ public class BaseballNewsActivity extends baseballActivity{
         /* fragment 화면 전환 */
         newsFragmentB = new fragment_news_b();
         teamFragmentB = new fragment_team_baseball();
-        playerFragmentB = new fragment_player_baseball();
         playerRecodeFragmentB = new fragment_player_recode_baseball();
 
         /* 초기 화면 */
@@ -82,9 +78,6 @@ public class BaseballNewsActivity extends baseballActivity{
                         return true;
                     case R.id.baseballTeam:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, teamFragmentB).commit();
-                        return true;
-                    case R.id.baseballPlayer:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, playerFragmentB).commit();
                         return true;
                     case R.id.PlayerRecodeB:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container, playerRecodeFragmentB).commit();
