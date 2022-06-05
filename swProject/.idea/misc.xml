@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/baseball.xml" value="0.24259259259259258" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/baseball_news.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/baseball_ranking.xml" value="0.176" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/baseball_schedule.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/baseball_star.xml" value="0.1287037037037037" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/fragment_news_b.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/fragment_news_s.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/fragment_player_recode_baseball.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/fragment_player_recode_soccer.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/fragment_team_baseball.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/fragment_team_soccer.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/soccer.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/soccer_news.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/soccer_ranking.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/soccer_schedule.xml" value="0.1" />
+        <entry key="..\:/Users/Owner/Desktop/good/swProject/app/src/main/res/layout/soccer_star.xml" value="0.264" />
         <entry key="..\:/Users/Owner/Desktop/sw/OpenSource_SW/swProject/app/src/main/res/layout/soccer_star.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/USER/Desktop/OpenSourceSW/swProject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.228" />
         <entry key="..\:/Users/USER/Desktop/OpenSourceSW/swProject/app/src/main/res/drawable/gradient.xml" value="0.228" />
