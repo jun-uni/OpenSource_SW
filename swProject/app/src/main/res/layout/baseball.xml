@@ -59,7 +59,7 @@
             android:layout_marginStart="230dp"
             android:layout_marginTop="340dp"
             android:textSize="20dp"
-            android:text="즐겨찾기"
+            android:text="실시간 경기"
             android:textColor="#ffffff"
             android:background="@drawable/shape_button" />
 
