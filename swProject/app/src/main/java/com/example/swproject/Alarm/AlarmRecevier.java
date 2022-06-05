@@ -5,7 +5,6 @@ import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +13,6 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 import com.example.swproject.R;
-import com.example.swproject.ui.MainActivity;
-import com.example.swproject.ui.SoccerRankingActivity;
 
 
 public class AlarmRecevier extends BroadcastReceiver {
@@ -46,8 +43,8 @@ public class AlarmRecevier extends BroadcastReceiver {
         }
 
         //알림창 클릭 시 soccerranking activity 화면 부름, 원래는 schedule로 이동
-        Intent intent2 = new Intent(context, SoccerRankingActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,101,intent2, PendingIntent.FLAG_UPDATE_CURRENT);
+       // Intent intent2 = new Intent(context, SoccerRankingActivity.class);
+      //  PendingIntent pendingIntent = PendingIntent.getActivity(context,101,intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //알림창 제목
         builder.setContentTitle("경기가 곧 시작됩니다");
@@ -56,7 +53,7 @@ public class AlarmRecevier extends BroadcastReceiver {
         //알림창 터치시 자동 삭제
         builder.setAutoCancel(true);
 
-        builder.setContentIntent(pendingIntent);
+        //builder.setContentIntent(pendingIntent);
 
         Notification notification = builder.build();
         manager.notify(1,notification);

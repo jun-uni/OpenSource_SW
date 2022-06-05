@@ -33,7 +33,6 @@
         <activity android:name=".ui.BaseballScheduleActivity"/>
         <activity android:name=".ui.BaseballStarActivity"/>
         <activity android:name=".ui.SoccerNewsActivity"/>
-        <activity android:name=".ui.SoccerRankingActivity"/>
         <activity android:name=".ui.SoccerScheduleActivity"/>
         <activity android:name=".ui.SoccerStarActivity"/>
         <activity android:name=".ui.SettingActivity"/>

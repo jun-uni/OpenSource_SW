@@ -123,7 +123,7 @@ public class SoccerScheduleActivity extends soccerActivity {
 
             StringBuilder str = new StringBuilder();
             for(Schedule i : data){
-                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("----------------------------------------------------").append("\n");
+                str.append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("\n");
                 if(i.GetIsPlaying()){
                     str.append("[진행중] ");
                 }

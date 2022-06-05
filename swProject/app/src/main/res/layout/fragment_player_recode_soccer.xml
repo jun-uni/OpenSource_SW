@@ -5,11 +5,26 @@
     android:layout_height="match_parent"
     tools:context=".fragment.fragment_player_recode_soccer">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="여기는 축구 선수 기록 정보"
-        android:textSize="60dp"
-        android:background="#2A2D32"/>
+        android:background="#2A2D32">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:id="@+id/text_player_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0sp"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </ScrollView>
+
+    </LinearLayout>
 
 </FrameLayout>

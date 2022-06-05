@@ -27,14 +27,6 @@ public class soccerActivity extends AppCompatActivity {
             }
         });
 
-        Button btnRs = (Button) findViewById(R.id.btnRankingS);
-        btnRs.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SoccerRankingActivity.class);
-                startActivity(intent);
-            }
-        });
 
         Button btnSs = (Button) findViewById(R.id.btnScheduleS);
         btnSs.setOnClickListener(new View.OnClickListener(){

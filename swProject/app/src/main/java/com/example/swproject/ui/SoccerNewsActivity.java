@@ -56,6 +56,8 @@ public class SoccerNewsActivity extends soccerActivity{
 
         text_news_ = findViewById(R.id.text_news);
 
+
+
         /* home 아이콘 눌렀을 때 메인화면 */
         ImageButton imageButton = (ImageButton) findViewById(R.id.homeicon);
         imageButton.setOnClickListener(new View.OnClickListener() {
