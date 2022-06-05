@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="0dp">
 
     <fragment
         android:id="@+id/setting"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="125dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.example.swproject.ui.fragment_preference"/>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -27,9 +28,74 @@
             android:scaleType="center"
             android:background="@drawable/ic_baseline_home_24" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Favorite"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:layout_marginStart="-30dp"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="italic"
+            android:text="축구팀 즐겨찾기 바로가기 Click =>"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/soccerstaricon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="center"
+            android:background="@drawable/ic_baseline_star_24" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="10dp"
+            android:textStyle="italic"
+            android:text="야구팀 즐겨찾기 바로가기 Click =>"
+            android:textSize="20dp"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/baseballstaricon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="center"
+            android:background="@drawable/ic_baseline_star_24" />
+
+    </LinearLayout>
 
 
-    </RelativeLayout>
+
 
 
 
