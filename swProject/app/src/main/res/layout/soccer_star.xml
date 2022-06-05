@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -43,6 +44,7 @@
         android:layout_alignParentTop="true"
         android:text="새로고침" />
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="280dp"
@@ -57,20 +59,367 @@
 
     </ScrollView>
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="0dp">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnNoti"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="27dp" />
+            android:orientation="vertical" >
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/btnNoti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/btnNoti1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="18dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNot8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/teamName20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:text="TextView" />
+                <Button
+                    android:id="@+id/btnNoti19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="100px"
+                    android:layout_marginEnd="16dp"
+                    android:text="알람설정하기" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
