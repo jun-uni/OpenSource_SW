@@ -116,13 +116,13 @@ public class BaseballScheduleActivity extends baseballActivity{
             for(Schedule i : data){
                 str.append("  ---------------").append(i.GetDate().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm z"))).append("---------------").append("\n");
                 if(i.GetIsPlaying()){
-                    str.append("                            ").append("[진행중] ").append("\n");
+                    str.append("[진행중] ").append("\n");
                 }
                 if(i.GetIsCanceled()){
-                    str.append("                            ").append("[해당 경기는 현지 사정으로 취소]" ).append("\n");
+                    str.append("[해당 경기는 현지 사정으로 취소]" ).append("\n");
                 }
 
-                str.append("                                        ").append(i.GetTeamLeft().GetName()).append("  [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]  ").append(i.GetTeamRight().GetName()).append("\n\n");
+                str.append(i.GetTeamLeft().GetName()).append("  [").append(i.GetTeamLeft().GetScore()).append(" : ").append(i.GetTeamRight().GetScore()).append("]  ").append(i.GetTeamRight().GetName()).append("\n\n");
             }
 
             schedule_.setText(str.toString());

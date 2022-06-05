@@ -803,11 +803,17 @@ public class MyParser {
                    }
                 }
 
-                if(str.indexOf("stadiumWeather") < 80 && str.contains("stadiumWeather")){
+                if(str.indexOf("stadiumWeather") < 200 && str.contains("stadiumWeather")){
                     str = str.substring(str.indexOf("id=\"stadiumWeather") + "id=\"stadiumWeather".length());
                     tmp_schedule.SetStadium(str.substring(3, str.indexOf("<")));
 
-                    tmp_schedule.SetIsPlaying(true);
+                    if(tmp_schedule.GetIsCanceled()){
+                        tmp_schedule.SetIsPlaying(false);
+                    }
+                    else{
+                        tmp_schedule.SetIsPlaying(true);
+                    }
+
                 }else{
                     str = str.substring(str.indexOf("\"td_stadium\">") + "\"td_stadium\">".length());
                     tmp_schedule.SetStadium(str.substring(0, str.indexOf("<")));

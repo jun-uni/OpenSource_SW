@@ -107,9 +107,11 @@ public class SoccerStarActivity extends soccerActivity{
             url_ += "팀/토트넘-홋스퍼/일정-결과/22doj4sgsocqpxw45h607udje";
         }
 
+        live_data_ = findViewById(R.id.text_live);
+
         new GetLive().execute(url_);
 
-        live_data_ = findViewById(R.id.text_live);
+
 
         Button btnRefresh = findViewById(R.id.btnRefresh);
         btnRefresh.setOnClickListener(view -> new GetLive().execute(url_));
